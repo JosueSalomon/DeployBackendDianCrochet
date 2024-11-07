@@ -1,0 +1,28 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const Usuario_controller_1 = require("../Controllers/Usuario.controller");
+const router = express_1.default.Router();
+router.post('/crear', Usuario_controller_1.crearUsuarioYEnviarCorreo);
+router.put('/validar/registro', Usuario_controller_1.ValidarCorreo);
+router.put('/nuevo/codigo', Usuario_controller_1.nuevoCodigo);
+router.post('/login', Usuario_controller_1.login);
+router.put('/correo/restablecer/contrasena', Usuario_controller_1.correoRestablecerContrasena);
+router.put('/validar/correo', Usuario_controller_1.ValidarCorreo);
+router.put('/restablecer/contrasena', Usuario_controller_1.restablecerNuevaContrasena);
+router.post('/contrasena/segura', Usuario_controller_1.establecerContrasenaSegura);
+router.put('/actualizar/foto/:correo', Usuario_controller_1.UpdateFoto);
+router.get('/detalle/:correo', Usuario_controller_1.getUsuario);
+router.put('/actualizar/:correo', Usuario_controller_1.updateUser);
+router.post('/facturas/:correo', Usuario_controller_1.getFacturasUsuario);
+router.post('/tutoriales/:correo', Usuario_controller_1.getTutorialesDeUsuario);
+// router.delete('/delete/:id', deleteUser);
+// router.get('/login', loginUser);
+// router.post('/sendEmail', EnviarCorreo);
+// router.get('/', getUsers);
+//router.put('/ValidarCorreo', ValidarCorreo);
+// router.delete('/delete/:id', deleteUser);
+exports.default = router;

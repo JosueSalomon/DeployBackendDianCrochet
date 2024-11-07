@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "5f38a0e7-1570-4bb9-bc11-79019a951c11",
+		"name": "resapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28261215",
+		"_collection_link": "https://crimson-firefly-704184.postman.co/workspace/25a41c41-7162-40f0-817d-c55821827712/collection/28261215-5f38a0e7-1570-4bb9-bc11-79019a951c11?action=share&source=collection_link&creator=28261215"
+	},
+	"item": [
+		{
+			"name": "API usuarios",
+			"item": [
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Tommy\",\r\n  \"apellido\": \"Matamoros\",\r\n  \"correo\": \"stephanymatamoros44@gmail.com\",\r\n  \"genero\": \"Masculino\",\r\n  \"contrasena\": \"1234\",\r\n  \"telefono\": \"4444-4444\",\r\n  \"fechaNacimiento\": \"2014-07-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"contrasena\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generar codigo validacion",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/nuevo/codigo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"nuevo",
+								"codigo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ValidacionCorreo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"codigoVeri\": \"hcu53y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/validar/correo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"validar",
+								"correo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enviarCorreoRestablecerContrasena",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/correo/restablecer/contrasena",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"correo",
+								"restablecer",
+								"contrasena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restablecer contrasena",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\" : \"stephanymatamoros44@gmail.com\", \r\n    \"nuevaContrasena\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/restablecer/contrasena",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"restablecer",
+								"contrasena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contraseña Segura",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contrasena\": \"hola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/contrasena/segura",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"contrasena",
+								"segura"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restablecer contrasena anterior",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros4@gmail.com\", \r\n    \"contrasenaAnterior\": \"12345\", \r\n    \"nuevaContrasena\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/restablecer/contrasena/anterior",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"restablecer",
+								"contrasena",
+								"anterior"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API productos",
+			"item": [
+				{
+					"name": "Obtener filtrados",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categorias\": [\"Gorros\", \"Accesorios\"],\r\n    \"min_precio\": 1,\r\n    \"max_precio\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/producto/filtrados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto",
+								"filtrados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar popularidad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/producto/filtro/popularidad/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto",
+								"filtro",
+								"popularidad",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API factura",
+			"item": [
+				{
+					"name": "Insertar producto a carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"sreyesz@unah.hn\",\r\n    \"idProducto\": 1,\r\n    \"cantidadCompra\": 2,\r\n    \"talla\": null,\r\n    \"grosor\": \"Fine\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/factura/carrito/insertar/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"carrito",
+								"insertar",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar carrito",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"sreyesz@unah.hn\",\r\n    \"nuevaCantidad\": 4, \r\n    \"idProducto\": 138\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/factura/carrito/actualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"carrito",
+								"actualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto de carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"sreyesz@unah.hn\",\r\n    \"idProducto\": 154\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/factura/carrito/producto/eliminar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"carrito",
+								"producto",
+								"eliminar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener carrito",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/factura/carrito/stephanymatamoros44@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"carrito",
+								"stephanymatamoros44@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subtotal carrito",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/factura/carrito/subtotal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"carrito",
+								"subtotal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener departamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/factura/departamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener ciudad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/factura/ciudad/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"ciudad",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardarEnvio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_factura\": 1,\r\n    \"direccion\": \"UNAH\",\r\n    \"id_ciudad\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/factura/envio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"envio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener factura",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/factura/detalle/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"detalle",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API pagos",
+			"item": [
+				{
+					"name": "Crear pago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"total_pago\": 14152,\r\n    \"id_factura\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/pago/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"pago",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
