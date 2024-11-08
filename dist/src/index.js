@@ -1,4 +1,3 @@
-//Commits
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -7,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
-//rutass
+//rutass ola
 const Usuario_router_1 = __importDefault(require("./Routers/Usuario.router"));
 const Admin_router_1 = __importDefault(require("./Routers/Admin.router"));
 const Producto_router_1 = __importDefault(require("./Routers/Producto.router"));
