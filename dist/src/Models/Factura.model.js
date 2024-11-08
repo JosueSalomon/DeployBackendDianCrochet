@@ -120,12 +120,13 @@ class Factura {
             return data;
         });
     }
-    static guardarPrecioEnvio(id_factura, direccion, id_ciudad) {
+    static guardarPrecioEnvio(id_factura, direccion, id_ciudad, numero) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data, error } = yield conexion_1.default.rpc('p_obtener_envio', {
                 p_id_factura: id_factura,
                 p_direccion: direccion,
-                p_id_ciudad: id_ciudad
+                p_id_ciudad: id_ciudad,
+                p_numero: numero
             });
             if (error) {
                 throw error;

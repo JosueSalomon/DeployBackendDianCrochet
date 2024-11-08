@@ -158,9 +158,9 @@ const borrarCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 });
 exports.borrarCarrito = borrarCarrito;
 const guardarPrecioEnvio = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id_factura, direccion, id_ciudad } = req.body;
+    const { id_factura, direccion, id_ciudad, numero } = req.body;
     try {
-        const envio = yield Factura_model_1.Factura.guardarPrecioEnvio(Number(id_factura), direccion, Number(id_ciudad));
+        const envio = yield Factura_model_1.Factura.guardarPrecioEnvio(Number(id_factura), direccion, Number(id_ciudad), numero);
         res.status(201).json({
             envio
         });

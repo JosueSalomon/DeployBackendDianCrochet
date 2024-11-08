@@ -57,7 +57,7 @@ export const createPayment = async (req: Request, res: Response) => {
             brand_name: 'DianCrochet',
             landing_page: 'NO_PREFERENCE',
             user_action: 'PAY_NOW',
-            return_url: `http://localhost:4000/pago/obtener/${id_factura}`,
+            return_url: `https://deploybackenddiancrochet.onrender.com/pago/obtener/${id_factura}`,
             cancel_url: 'http://localhost:3000/checkout/shop-cart'
         }
     };

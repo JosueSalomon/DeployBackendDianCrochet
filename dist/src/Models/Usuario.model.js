@@ -152,5 +152,18 @@ class User {
             return data;
         });
     }
+    static restablecerContrasenaAnteriorS(correo, contrasenaAnterior, nuevaContrasena) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_restablecer_contrasena_anterior', {
+                p_correo: correo,
+                p_nueva_contrasena: nuevaContrasena,
+                p_contrasena_anterior: contrasenaAnterior
+            });
+            console.log("data1", data);
+            if (error)
+                throw error;
+            return data;
+        });
+    }
 }
 exports.User = User;

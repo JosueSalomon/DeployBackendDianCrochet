@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTutorialesDeUsuario = exports.getFacturasUsuario = exports.updateUser = exports.getUsuario = exports.UpdateFoto = exports.establecerContrasenaSegura = exports.restablecerNuevaContrasena = exports.correoRestablecerContrasena = exports.login = exports.nuevoCodigo = exports.ValidarCorreo = exports.crearUsuarioYEnviarCorreo = void 0;
+exports.restablecerContrasenaAnterior = exports.getTutorialesDeUsuario = exports.getFacturasUsuario = exports.updateUser = exports.getUsuario = exports.UpdateFoto = exports.establecerContrasenaSegura = exports.restablecerNuevaContrasena = exports.correoRestablecerContrasena = exports.login = exports.nuevoCodigo = exports.ValidarCorreo = exports.crearUsuarioYEnviarCorreo = void 0;
 const Usuario_model_1 = require("../Models/Usuario.model");
 const mailer_1 = require("../Utils/mailer");
 function generarCodigoAleatorio() {
@@ -372,6 +372,27 @@ const getTutorialesDeUsuario = (req, res) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.getTutorialesDeUsuario = getTutorialesDeUsuario;
+const restablecerContrasenaAnterior = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { correo, contrasenaAnterior, nuevaContrasena } = req.body;
+    try {
+        const validacion = yield Usuario_model_1.User.restablecerContrasenaAnteriorS(correo, contrasenaAnterior, nuevaContrasena);
+        console.log("data2", validacion);
+        res.status(201).json({
+            validacion
+        });
+    }
+    catch (error) {
+        const errorInfo = error && typeof error === 'object'
+            ? JSON.stringify(error, null, 2)
+            : (error === null || error === void 0 ? void 0 : error.toString()) || 'Error desconocido';
+        console.error('Informacion del error: ', errorInfo);
+        res.status(500).json({
+            message: 'Información del error: ',
+            error: errorInfo
+        });
+    }
+});
+exports.restablecerContrasenaAnterior = restablecerContrasenaAnterior;
 // export const getUsers = async (req: Request, res: Response) => {
 //     try {
 //         const users = await User.getUsers();
