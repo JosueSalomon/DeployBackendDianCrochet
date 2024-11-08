@@ -1,4 +1,3 @@
-//Commits
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -27,7 +26,7 @@ app.use('/factura', Factura_router_1.default);
 app.use('/pago', Pagos_router_1.default);
 //Servidor Raiz.
 app.get('/', (req, res) => {
-    res.send('Root server is on');
+    res.send('Root server is on siuuuuuuuuu');
 });
 //Mensaje de consola que dice que funciona.
 app.listen(port, () => {
