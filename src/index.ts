@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-//rutass
+//rutass ola
 import userRouter from './Routers/Usuario.router'
 import adminRouter from './Routers/Admin.router'
 import productoRouter from './Routers/Producto.router'
