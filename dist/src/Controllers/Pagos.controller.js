@@ -62,7 +62,7 @@ const createPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 landing_page: 'NO_PREFERENCE',
                 user_action: 'PAY_NOW',
                 return_url: `https://deploybackenddiancrochet.onrender.com/pago/obtener/${id_factura}`,
-                cancel_url: 'http://localhost:3000/checkout/shop-cart'
+                cancel_url: 'https://dian-crochet-8ii.vercel.app/checkout/shop-cart'
             }
         };
         const response = yield axios_1.default.post(`${process.env.PAYPAL_API}/v2/checkout/orders`, body, {
@@ -109,7 +109,7 @@ const executePayment = (req, res) => __awaiter(void 0, void 0, void 0, function*
             throw new Error('No se pudo guardar la información del pago en la base de datos');
         }
         //hola
-        res.redirect('http://localhost:3000/products');
+        res.redirect('https://dian-crochet-8ii.vercel.app/products');
     }
     catch (error) {
         const errorInfo = error && typeof error === 'object'

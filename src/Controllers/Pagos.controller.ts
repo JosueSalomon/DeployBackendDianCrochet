@@ -58,7 +58,7 @@ export const createPayment = async (req: Request, res: Response) => {
             landing_page: 'NO_PREFERENCE',
             user_action: 'PAY_NOW',
             return_url: `https://deploybackenddiancrochet.onrender.com/pago/obtener/${id_factura}`,
-            cancel_url: 'http://localhost:3000/checkout/shop-cart'
+            cancel_url: 'https://dian-crochet-8ii.vercel.app/checkout/shop-cart'
         }
     };
 
@@ -130,7 +130,7 @@ export const executePayment = async (req: Request, res: Response) => {
             throw new Error('No se pudo guardar la información del pago en la base de datos');
         }
 //hola
-        res.redirect('http://localhost:3000/products');
+        res.redirect('https://dian-crochet-8ii.vercel.app/products');
     } catch (error) {
         const errorInfo = error && typeof error === 'object'
             ? JSON.stringify(error, null, 2)
