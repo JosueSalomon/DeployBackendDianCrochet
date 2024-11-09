@@ -205,13 +205,13 @@ export const crearUsuarioYEnviarCorreo = async (req: Request, res: Response) => 
         );
 
         // Enviar correo de verificación
-        await EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
-
         // Respuesta exitosa
         res.status(201).json({  
             user
                 });
-
+        if(user.codigo ===1){
+        await EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
+        }
     } catch (error) {
         // Manejo de errores
         console.log('error con creacion de usuario', error);

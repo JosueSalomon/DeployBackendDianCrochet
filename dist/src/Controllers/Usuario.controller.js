@@ -184,11 +184,13 @@ const crearUsuarioYEnviarCorreo = (req, res) => __awaiter(void 0, void 0, void 0
         // Crear usuario
         const user = yield Usuario_model_1.User.createUser(nombre, apellido, correo, genero, contrasena, telefono, fechaNacimiento, verificationCode, descripcion);
         // Enviar correo de verificación
-        yield EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
         // Respuesta exitosa
         res.status(201).json({
             user
         });
+        if (user.codigo === 1) {
+            yield EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
+        }
     }
     catch (error) {
         // Manejo de errores
