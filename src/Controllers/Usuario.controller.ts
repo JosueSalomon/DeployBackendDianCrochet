@@ -204,7 +204,6 @@ export const crearUsuarioYEnviarCorreo = async (req: Request, res: Response) => 
             descripcion
         );
 
-        // Enviar correo de verificación
         // Respuesta exitosa
         res.status(201).json({  
             user
@@ -212,6 +211,7 @@ export const crearUsuarioYEnviarCorreo = async (req: Request, res: Response) => 
         if(user.codigo ===1){
         await EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
         }
+        console.log(user.codigo)
     } catch (error) {
         // Manejo de errores
         console.log('error con creacion de usuario', error);
