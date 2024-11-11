@@ -241,10 +241,12 @@ export const nuevoCodigo = async(req: Request, res: Response) =>{
         const verificationCode = generarCodigoAleatorio();
         const descripcion = "Verificacion de creacion de cuenta";
         const user = await User.nuevoCodigo(correo, verificationCode);
-        await EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
         res.status(201).json({ 
             user
         });
+        if(user.codigo===1){
+            await EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
+        }
     } catch(error: any){
         console.log("error al generar nuevo codigo", error);
         res.status(500).json({ message: 'Error en el servidor', error });

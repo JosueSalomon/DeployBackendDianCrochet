@@ -219,10 +219,12 @@ const nuevoCodigo = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const verificationCode = generarCodigoAleatorio();
         const descripcion = "Verificacion de creacion de cuenta";
         const user = yield Usuario_model_1.User.nuevoCodigo(correo, verificationCode);
-        yield EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
         res.status(201).json({
             user
         });
+        if (user.codigo === 1) {
+            yield EnviarCorreo(correo, verificationCode, "Código de verificación", descripcion);
+        }
     }
     catch (error) {
         console.log("error al generar nuevo codigo", error);
