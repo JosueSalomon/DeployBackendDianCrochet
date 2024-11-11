@@ -12,7 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uploadImage = void 0;
+exports.LoginAdmin = exports.uploadImage = void 0;
+const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -40,3 +41,17 @@ const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.uploadImage = uploadImage;
+const LoginAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { correo, contrasena } = req.body;
+    try {
+        const admin = yield Admin_model_1.Admin.login(correo, contrasena);
+        res.status(201).json({
+            admin
+        });
+    }
+    catch (error) {
+        console.log("error con login", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+});
+exports.LoginAdmin = LoginAdmin;
