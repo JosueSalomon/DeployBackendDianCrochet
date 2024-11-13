@@ -771,6 +771,22 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "ObtenerEstdosFactura",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarEstadoOrden",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		}
