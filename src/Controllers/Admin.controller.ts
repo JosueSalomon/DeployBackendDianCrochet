@@ -1,5 +1,8 @@
 import { Request, Response } from 'express';
-import imagekit from '../Utils/imageKitConfig'; 
+import { Admin } from '../Models/Admin.model'
+
+import imagekit from '../Utils/imageKitConfig';
+
 
 interface MulterRequest extends Request {
   file?: Express.Multer.File; // Aquí hacemos 'file' opcional
@@ -37,3 +40,18 @@ export const uploadImage = async (req: MulterRequest, res: Response): Promise<vo
     res.status(500).json({ error: 'Error al subir la imagen' });
   }
 };
+
+
+export const LoginAdmin = async (req: Request, res: Response) => {
+  const {correo,contrasena } = req.body;
+  try{
+      const admin = await Admin.login(correo,contrasena);
+      res.status(201).json({ 
+        admin
+    });
+  }catch(error: any){
+        console.log("error con login", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+
+}
