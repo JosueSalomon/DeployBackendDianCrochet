@@ -7,4 +7,32 @@ export class Admin{
         if (error) throw error;
         return data;
     }
+
+    static async DetalleOrdenProdcuto(idFactura: number){
+            const {data, error} = await supabase.rpc('p_get_detalle_orden_productos',{
+                p_id_factura: idFactura
+            });
+            if (error) throw error;
+            return data;
+    }
+
+    static async DetalleOrdenCliente(idFactura: number){
+        const {data, error} = await supabase.rpc('p_get_detalle_orden_cliente',{
+            p_id_factura: idFactura
+        });
+        if (error) throw error;
+        return data;
+    }
+
+    static async ObtenerOrdenes(
+        idEstado: number, columna_ordenamiento: string,
+        direccion_ordenamiento: string ){
+        const {data, error} = await supabase.rpc('p_get_todas_las_ordenes',{
+            p_id_estado_fact: idEstado,
+            p_orden_columna: columna_ordenamiento,
+            p_orden_direccion: direccion_ordenamiento
+        });
+        if (error) throw error;
+        return data;
+    }
 }

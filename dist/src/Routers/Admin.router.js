@@ -9,4 +9,7 @@ const Admin_controller_1 = require("../Controllers/Admin.controller");
 const router = (0, express_1.Router)();
 router.post('/upload', upload_1.default.single('file'), Admin_controller_1.uploadImage);
 router.post('/login', Admin_controller_1.LoginAdmin);
+router.get('/detalle/orden/:IdOrden', Admin_controller_1.DetalleOrdenProdcuto);
+router.get('/detalle/cliente/orden/:IdOrden', Admin_controller_1.DetalleOrdenCliente);
+router.post('/ordenes/:idEstado', Admin_controller_1.ObtenerOrdenes);
 exports.default = router;

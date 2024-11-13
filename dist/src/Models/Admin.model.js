@@ -23,5 +23,37 @@ class Admin {
             return data;
         });
     }
+    static DetalleOrdenProdcuto(idFactura) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_get_detalle_orden_productos', {
+                p_id_factura: idFactura
+            });
+            if (error)
+                throw error;
+            return data;
+        });
+    }
+    static DetalleOrdenCliente(idFactura) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_get_detalle_orden_cliente', {
+                p_id_factura: idFactura
+            });
+            if (error)
+                throw error;
+            return data;
+        });
+    }
+    static ObtenerOrdenes(idEstado, columna_ordenamiento, direccion_ordenamiento) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_get_todas_las_ordenes', {
+                p_id_estado_fact: idEstado,
+                p_orden_columna: columna_ordenamiento,
+                p_orden_direccion: direccion_ordenamiento
+            });
+            if (error)
+                throw error;
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;

@@ -55,3 +55,47 @@ export const LoginAdmin = async (req: Request, res: Response) => {
     }
 
 }
+
+export const DetalleOrdenProdcuto = async (req: Request, res: Response) => {
+  const {IdOrden} = req.params;
+  try{
+      const DetalleOrden = await Admin.DetalleOrdenProdcuto(Number(IdOrden));
+      res.status(201).json({
+        DetalleOrden
+      })
+  }catch(error: any){
+    console.log("error fetch detalle orden ", error);
+    res.status(500).json({ message: 'Error en el servidor', error });
+  }
+
+}
+
+export const DetalleOrdenCliente = async (req: Request, res: Response) => {
+  const {IdOrden} = req.params;
+  try{
+      const DetalleOrdenCliente = await Admin.DetalleOrdenCliente(Number(IdOrden));
+      res.status(201).json({
+        DetalleOrdenCliente
+      })
+  }catch(error: any){
+    console.log("error fetch detalle del con su orden ", error);
+    res.status(500).json({ message: 'Error en el servidor', error });
+  }
+
+}
+
+export const ObtenerOrdenes = async (req: Request, res: Response) =>{
+  const{idEstado} = req.params;
+  const{columna_ordenamiento,
+      direccion_ordenamiento} = req.body
+
+    try{
+        const ordenes = await Admin.ObtenerOrdenes(Number(idEstado),columna_ordenamiento,direccion_ordenamiento);
+        res.status(201).json({
+          ordenes
+        })
+    }catch(error: any){
+      console.log("error fetch de ordenes ", error);
+      res.status(500).json({ message: 'Error en el servidor', error });
+    }
+}
