@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5f38a0e7-1570-4bb9-bc11-79019a951c11",
+		"_postman_id": "18886fb9-951e-4a2c-b049-2352e199be32",
 		"name": "resapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "28261215",
-		"_collection_link": "https://crimson-firefly-704184.postman.co/workspace/25a41c41-7162-40f0-817d-c55821827712/collection/28261215-5f38a0e7-1570-4bb9-bc11-79019a951c11?action=share&source=collection_link&creator=28261215"
+		"_exporter_id": "31043432"
 	},
 	"item": [
 		{
@@ -25,7 +24,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/crear",
+							"raw": "http://localhost:4000/user/new",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -33,7 +32,7 @@
 							"port": "4000",
 							"path": [
 								"user",
-								"crear"
+								"new"
 							]
 						}
 					},
@@ -46,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"contrasena\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,7 +82,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/nuevo/codigo",
+							"raw": "http://localhost:4000/user/NuevoCodigo",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -91,8 +90,7 @@
 							"port": "4000",
 							"path": [
 								"user",
-								"nuevo",
-								"codigo"
+								"NuevoCodigo"
 							]
 						}
 					},
@@ -105,7 +103,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"codigoVeri\": \"hcu53y\"\r\n}",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"codigoVeri\": \"Lncj6y\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -113,7 +111,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/validar/correo",
+							"raw": "http://localhost:4000/user/validarCorreo",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -121,8 +119,7 @@
 							"port": "4000",
 							"path": [
 								"user",
-								"validar",
-								"correo"
+								"validarCorreo"
 							]
 						}
 					},
@@ -143,7 +140,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/correo/restablecer/contrasena",
+							"raw": "http://localhost:4000/user/correo/restablecerContrasena",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -152,8 +149,7 @@
 							"path": [
 								"user",
 								"correo",
-								"restablecer",
-								"contrasena"
+								"restablecerContrasena"
 							]
 						}
 					},
@@ -220,13 +216,13 @@
 					"response": []
 				},
 				{
-					"name": "restablecer contrasena anterior",
+					"name": "ActualizarFoto",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"correo\": \"stephanymatamoros4@gmail.com\", \r\n    \"contrasenaAnterior\": \"12345\", \r\n    \"nuevaContrasena\": \"12345\"\r\n}",
+							"raw": "{\r\n    \"nueva_url_imagen\": \"https://ik.imagekit.io/diancrochet/Fotos/CrochetDinosaurio3.jpeg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -234,7 +230,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/user/restablecer/contrasena/anterior",
+							"raw": "http://localhost:4000/user/actualizar/foto/josueisacsalomonlanda@gmail.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -242,11 +238,91 @@
 							"port": "4000",
 							"path": [
 								"user",
-								"restablecer",
-								"contrasena",
-								"anterior"
+								"actualizar",
+								"foto",
+								"josueisacsalomonlanda@gmail.com"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "get usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/user/detalle/josueisacsalomonlanda@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"detalle",
+								"josueisacsalomonlanda@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nuevo_nombre\": \"JosueNuevo\",\r\n    \"Nuevo_apellido\": \"SalomonNuevo\",\r\n    \"Nuevo_genero\": \"GeneroNuevo\",\r\n    \"Nuevo_telefono\": \"4444-4444\",\r\n    \"Nuevo_fechaNacimiento\": \"2014-07-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/actualizar/josueisacsalomonlanda@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"actualizar",
+								"josueisacsalomonlanda@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Facturas usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/user/facturas/stephanymatamoros44@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"facturas",
+								"stephanymatamoros44@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tutoriales de usuario",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
@@ -256,41 +332,12 @@
 			"name": "API productos",
 			"item": [
 				{
-					"name": "Obtener filtrados",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"categorias\": [\"Gorros\", \"Accesorios\"],\r\n    \"min_precio\": 1,\r\n    \"max_precio\": 0\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:4000/producto/filtrados",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"producto",
-								"filtrados"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Filtrar popularidad",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/producto/filtro/popularidad/4",
+							"raw": "http://localhost:4000/producto/filtro/popularidad/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -300,9 +347,174 @@
 								"producto",
 								"filtro",
 								"popularidad",
-								"4"
+								"1"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar productos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categorias\": [\"Accesorios\", \"Llaveros\"],\r\n    \"min_precio\": null,\r\n    \"max_precio\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/producto/filtrados/Producto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto",
+								"filtrados",
+								"Producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/producto/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto",
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ordenar productos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categorias\": null,\r\n    \"min_precio\": null,\r\n    \"max_precio\": null,\r\n    \"columna_ordenamiento\": \"NOMBRE_PROD\",\r\n    \"direccion_ordenamiento\": \"DESC\"\r\n    //ASC\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/producto/ordenados/Producto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto",
+								"ordenados",
+								"Producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProdcutosSimilares",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/producto/similares/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto",
+								"similares",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DetalleProducto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/producto/detalle/32",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto",
+								"detalle",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETproductos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/producto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cateogrias materiales",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ordenar materiales",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "get detalle material",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
@@ -312,13 +524,54 @@
 			"name": "API factura",
 			"item": [
 				{
+					"name": "Get Departamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/factura/departamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ciudades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/factura/ciudad/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"factura",
+								"ciudad",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Insertar producto a carrito",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"correo\": \"sreyesz@unah.hn\",\r\n    \"idProducto\": 1,\r\n    \"cantidadCompra\": 2,\r\n    \"talla\": null,\r\n    \"grosor\": \"Fine\"\r\n}",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"idProducto\": \"3\",\r\n    \"cantidadCompra\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -326,7 +579,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/factura/carrito/insertar/actualizar",
+							"raw": "http://localhost:4000/factura/carrito/insertar",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -335,8 +588,7 @@
 							"path": [
 								"factura",
 								"carrito",
-								"insertar",
-								"actualizar"
+								"insertar"
 							]
 						}
 					},
@@ -349,7 +601,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"correo\": \"sreyesz@unah.hn\",\r\n    \"nuevaCantidad\": 4, \r\n    \"idProducto\": 138\r\n}",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"nuevaCantidad\": \"100\", \r\n    \"idProducto\": \"3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -379,7 +631,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"correo\": \"sreyesz@unah.hn\",\r\n    \"idProducto\": 154\r\n}",
+							"raw": "{\r\n    \"correo\": \"stephanymatamoros44@gmail.com\",\r\n    \"idProducto\": \"3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -455,77 +707,7 @@
 					"response": []
 				},
 				{
-					"name": "Obtener departamento",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:4000/factura/departamentos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"factura",
-								"departamentos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "obtener ciudad",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:4000/factura/ciudad/8",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"factura",
-								"ciudad",
-								"8"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "guardarEnvio",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id_factura\": 1,\r\n    \"direccion\": \"UNAH\",\r\n    \"id_ciudad\": 15\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:4000/factura/envio",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"factura",
-								"envio"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Obtener factura",
+					"name": "get detalle factura",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -544,38 +726,49 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "EliminarFactura",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "API pagos",
+			"name": "API ADMIN",
 			"item": [
 				{
-					"name": "Crear pago",
+					"name": "DetalleOrdenCliente",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "LoginAdmin",
 					"request": {
 						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"total_pago\": 14152,\r\n    \"id_factura\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:4000/pago/crear",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"pago",
-								"crear"
-							]
-						}
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "DetalleOrdenProdcuto",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerOrdenes",
+					"request": {
+						"method": "POST",
+						"header": []
 					},
 					"response": []
 				}

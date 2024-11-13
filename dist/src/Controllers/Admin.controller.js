@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginAdmin = exports.uploadImage = void 0;
+exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -55,3 +55,46 @@ const LoginAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.LoginAdmin = LoginAdmin;
+const DetalleOrdenProdcuto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { IdOrden } = req.params;
+    try {
+        const DetalleOrden = yield Admin_model_1.Admin.DetalleOrdenProdcuto(Number(IdOrden));
+        res.status(201).json({
+            DetalleOrden
+        });
+    }
+    catch (error) {
+        console.log("error fetch detalle orden ", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+});
+exports.DetalleOrdenProdcuto = DetalleOrdenProdcuto;
+const DetalleOrdenCliente = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { IdOrden } = req.params;
+    try {
+        const DetalleOrdenCliente = yield Admin_model_1.Admin.DetalleOrdenCliente(Number(IdOrden));
+        res.status(201).json({
+            DetalleOrdenCliente
+        });
+    }
+    catch (error) {
+        console.log("error fetch detalle del con su orden ", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+});
+exports.DetalleOrdenCliente = DetalleOrdenCliente;
+const ObtenerOrdenes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { idEstado } = req.params;
+    const { columna_ordenamiento, direccion_ordenamiento } = req.body;
+    try {
+        const ordenes = yield Admin_model_1.Admin.ObtenerOrdenes(Number(idEstado), columna_ordenamiento, direccion_ordenamiento);
+        res.status(201).json({
+            ordenes
+        });
+    }
+    catch (error) {
+        console.log("error fetch de ordenes ", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+});
+exports.ObtenerOrdenes = ObtenerOrdenes;
