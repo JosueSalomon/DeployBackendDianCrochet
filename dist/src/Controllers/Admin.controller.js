@@ -84,10 +84,9 @@ const DetalleOrdenCliente = (req, res) => __awaiter(void 0, void 0, void 0, func
 });
 exports.DetalleOrdenCliente = DetalleOrdenCliente;
 const ObtenerOrdenes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { idEstado } = req.params;
-    const { columna_ordenamiento, direccion_ordenamiento } = req.body;
+    const { idEstado, columna_ordenamiento, direccion_ordenamiento } = req.body;
     try {
-        const ordenes = yield Admin_model_1.Admin.ObtenerOrdenes(Number(idEstado), columna_ordenamiento, direccion_ordenamiento);
+        const ordenes = yield Admin_model_1.Admin.ObtenerOrdenes(idEstado, columna_ordenamiento, direccion_ordenamiento);
         res.status(201).json({
             ordenes
         });

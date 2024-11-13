@@ -85,12 +85,11 @@ export const DetalleOrdenCliente = async (req: Request, res: Response) => {
 }
 
 export const ObtenerOrdenes = async (req: Request, res: Response) =>{
-  const{idEstado} = req.params;
-  const{columna_ordenamiento,
+  const{idEstado,columna_ordenamiento,
       direccion_ordenamiento} = req.body
 
     try{
-        const ordenes = await Admin.ObtenerOrdenes(Number(idEstado),columna_ordenamiento,direccion_ordenamiento);
+        const ordenes = await Admin.ObtenerOrdenes(idEstado,columna_ordenamiento,direccion_ordenamiento);
         res.status(201).json({
           ordenes
         })

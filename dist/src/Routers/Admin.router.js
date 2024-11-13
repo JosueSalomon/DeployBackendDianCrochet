@@ -11,5 +11,5 @@ router.post('/upload', upload_1.default.single('file'), Admin_controller_1.uploa
 router.post('/login', Admin_controller_1.LoginAdmin);
 router.get('/detalle/orden/:IdOrden', Admin_controller_1.DetalleOrdenProdcuto);
 router.get('/detalle/cliente/orden/:IdOrden', Admin_controller_1.DetalleOrdenCliente);
-router.post('/ordenes/:idEstado', Admin_controller_1.ObtenerOrdenes);
+router.post('/ordenes', Admin_controller_1.ObtenerOrdenes);
 exports.default = router;

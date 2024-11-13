@@ -9,7 +9,7 @@ router.post('/upload', upload.single('file'), uploadImage);
 router.post('/login', LoginAdmin);
 router.get('/detalle/orden/:IdOrden', DetalleOrdenProdcuto);
 router.get('/detalle/cliente/orden/:IdOrden', DetalleOrdenCliente);
-router.post('/ordenes/:idEstado', ObtenerOrdenes);
+router.post('/ordenes', ObtenerOrdenes);
 
 
 
