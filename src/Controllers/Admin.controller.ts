@@ -98,3 +98,33 @@ export const ObtenerOrdenes = async (req: Request, res: Response) =>{
       res.status(500).json({ message: 'Error en el servidor', error });
     }
 }
+
+
+export const ObtenerEstdosFactura = async (req: Request, res: Response) => {
+  try {
+      const Estados = await Admin.ObtenerEstadosFactura();
+
+      res.status(201).json({
+        Estados
+      });
+  }
+  catch (error) {
+      console.log('error con fetch de Estados de factura', error);
+      res.status(500).json({ message: 'algo paso mal :(', error });
+  }
+}
+
+export const ActualizarEstadoOrden = async (req: Request, res: Response) => {
+  const {IdOrden} = req.params;
+  const{IdNuevoEstado} = req.body
+
+  try{
+      const UpdatedOrden = await Admin.ActualizarEstadoOrden(Number(IdOrden),IdNuevoEstado)
+      res.status(201).json({
+        UpdatedOrden
+      });
+  }catch (error) {
+      console.log('error con actualizacion de Estados de factura', error);
+      res.status(500).json({ message: 'algo paso mal :(', error });
+  }
+}

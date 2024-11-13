@@ -55,5 +55,26 @@ class Admin {
             return data;
         });
     }
+    static ObtenerEstadosFactura() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_obtener_estados_fact');
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
+    static ActualizarEstadoOrden(idOrden, idNuevoEstado) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_cambiar_estado_orden', {
+                p_id_factura: idOrden,
+                p_id_estado_fact: idNuevoEstado
+            });
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;

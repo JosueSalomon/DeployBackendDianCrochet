@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -97,3 +97,31 @@ const ObtenerOrdenes = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.ObtenerOrdenes = ObtenerOrdenes;
+const ObtenerEstdosFactura = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const Estados = yield Admin_model_1.Admin.ObtenerEstadosFactura();
+        res.status(201).json({
+            Estados
+        });
+    }
+    catch (error) {
+        console.log('error con fetch de Estados de factura', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+});
+exports.ObtenerEstdosFactura = ObtenerEstdosFactura;
+const ActualizarEstadoOrden = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { IdOrden } = req.params;
+    const { IdNuevoEstado } = req.body;
+    try {
+        const UpdatedOrden = yield Admin_model_1.Admin.ActualizarEstadoOrden(Number(IdOrden), IdNuevoEstado);
+        res.status(201).json({
+            UpdatedOrden
+        });
+    }
+    catch (error) {
+        console.log('error con actualizacion de Estados de factura', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+});
+exports.ActualizarEstadoOrden = ActualizarEstadoOrden;
