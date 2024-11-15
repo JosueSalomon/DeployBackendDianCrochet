@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import upload from '../Utils/upload'; 
 import { uploadImage,LoginAdmin,DetalleOrdenProdcuto,DetalleOrdenCliente,ObtenerOrdenes,
-    ObtenerEstdosFactura,ActualizarEstadoOrden
+    ObtenerEstdosFactura,ActualizarEstadoOrden,Obtener_productos_admin,
+    Obtener_productos_por_categoria_admin
 } from '../Controllers/Admin.controller'; 
 
 const router = Router();
@@ -14,6 +15,10 @@ router.get('/detalle/cliente/orden/:IdOrden', DetalleOrdenCliente);
 router.post('/ordenes', ObtenerOrdenes);
 router.get('/factura/estados', ObtenerEstdosFactura);
 router.put('/update/estado/:IdOrden', ActualizarEstadoOrden);
+router.get('/productos', Obtener_productos_admin);
+router.get('/prodcutos/categoria/:IdCategoria', Obtener_productos_por_categoria_admin);
+
+
 
 
 

@@ -14,4 +14,6 @@ router.get('/detalle/cliente/orden/:IdOrden', Admin_controller_1.DetalleOrdenCli
 router.post('/ordenes', Admin_controller_1.ObtenerOrdenes);
 router.get('/factura/estados', Admin_controller_1.ObtenerEstdosFactura);
 router.put('/update/estado/:IdOrden', Admin_controller_1.ActualizarEstadoOrden);
+router.get('/productos', Admin_controller_1.Obtener_productos_admin);
+router.get('/prodcutos/categoria/:IdCategoria', Admin_controller_1.Obtener_productos_por_categoria_admin);
 exports.default = router;

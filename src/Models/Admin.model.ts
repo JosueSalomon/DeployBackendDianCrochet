@@ -55,4 +55,22 @@ export class Admin{
         }
         return data;
     }
+
+    static async Obtener_todos_los_productos_admin(){
+        const{data, error} = await supabase.rpc('p_obtener_todos_los_productos_admin');
+        if(error){
+            throw error;
+        }
+        return data;
+    }
+
+    static async Obtener_productos_por_categoria_admin(IdCategoria: number){
+        const{data, error} = await supabase.rpc('p_obtener_productos_por_categoria_admin',{
+            p_id_categoria: IdCategoria
+        });
+        if(error){
+            throw error;
+        }
+        return data;
+    }
 }

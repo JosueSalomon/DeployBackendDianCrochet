@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -125,3 +125,30 @@ const ActualizarEstadoOrden = (req, res) => __awaiter(void 0, void 0, void 0, fu
     }
 });
 exports.ActualizarEstadoOrden = ActualizarEstadoOrden;
+const Obtener_productos_admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const productos = yield Admin_model_1.Admin.Obtener_todos_los_productos_admin();
+        res.status(201).json({
+            productos
+        });
+    }
+    catch (error) {
+        console.log('error con fetch de productos', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+});
+exports.Obtener_productos_admin = Obtener_productos_admin;
+const Obtener_productos_por_categoria_admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { IdCategoria } = req.params;
+    try {
+        const productosConCategoria = yield Admin_model_1.Admin.Obtener_productos_por_categoria_admin(Number(IdCategoria));
+        res.status(201).json({
+            productosConCategoria
+        });
+    }
+    catch (error) {
+        console.log('error con fetch de productos con categorias', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+});
+exports.Obtener_productos_por_categoria_admin = Obtener_productos_por_categoria_admin;

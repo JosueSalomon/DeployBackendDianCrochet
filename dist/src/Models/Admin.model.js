@@ -76,5 +76,25 @@ class Admin {
             return data;
         });
     }
+    static Obtener_todos_los_productos_admin() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_obtener_todos_los_productos_admin');
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
+    static Obtener_productos_por_categoria_admin(IdCategoria) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_obtener_productos_por_categoria_admin', {
+                p_id_categoria: IdCategoria
+            });
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;

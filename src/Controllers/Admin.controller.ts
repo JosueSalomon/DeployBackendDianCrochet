@@ -128,3 +128,34 @@ export const ActualizarEstadoOrden = async (req: Request, res: Response) => {
       res.status(500).json({ message: 'algo paso mal :(', error });
   }
 }
+
+
+export const Obtener_productos_admin = async (req: Request, res: Response) => {
+  try {
+      const productos = await Admin.Obtener_todos_los_productos_admin();
+
+      res.status(201).json({
+        productos
+      });
+  }
+  catch (error) {
+      console.log('error con fetch de productos', error);
+      res.status(500).json({ message: 'algo paso mal :(', error });
+  }
+}
+
+export const Obtener_productos_por_categoria_admin = async (req: Request, res: Response) => {
+  const {IdCategoria} = req.params;
+  
+  try {
+      const productosConCategoria = await Admin.Obtener_productos_por_categoria_admin(Number(IdCategoria));
+
+      res.status(201).json({
+        productosConCategoria
+      });
+  }
+  catch (error) {
+      console.log('error con fetch de productos con categorias', error);
+      res.status(500).json({ message: 'algo paso mal :(', error });
+  }
+}
