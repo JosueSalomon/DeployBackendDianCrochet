@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import upload from '../Utils/upload'; 
 import { uploadImage,LoginAdmin,DetalleOrdenProdcuto,DetalleOrdenCliente,ObtenerOrdenes,
-    ObtenerEstdosFactura,ActualizarEstadoOrden
+    ObtenerEstdosFactura,ActualizarEstadoOrden,
+    CrearProductoSinTallas
 } from '../Controllers/Admin.controller'; 
 
 const router = Router();
@@ -14,6 +15,9 @@ router.get('/detalle/cliente/orden/:IdOrden', DetalleOrdenCliente);
 router.post('/ordenes', ObtenerOrdenes);
 router.get('/factura/estados', ObtenerEstdosFactura);
 router.put('/update/estado/:IdOrden', ActualizarEstadoOrden);
+
+
+router.post('/create/producto/sintalla', CrearProductoSinTallas)
 
 
 

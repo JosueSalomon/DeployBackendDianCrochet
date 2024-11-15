@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.CrearProductoSinTallas = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -125,3 +125,17 @@ const ActualizarEstadoOrden = (req, res) => __awaiter(void 0, void 0, void 0, fu
     }
 });
 exports.ActualizarEstadoOrden = ActualizarEstadoOrden;
+const CrearProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { nombre_prod, id_tipo_prod, precio, cantidad, descripcion, categorias, imagen_principal, imagen_miniaturas } = req.body;
+    try {
+        const UpdatedOrden = yield Admin_model_1.Admin.CrearProductoSinTallas(nombre_prod, id_tipo_prod, precio, cantidad, descripcion, categorias, imagen_principal, imagen_miniaturas);
+        res.status(201).json({
+            UpdatedOrden
+        });
+    }
+    catch (error) {
+        console.log('Error con la creación del producto', error);
+        res.status(500).json({ message: 'Error con la creación del producto', error });
+    }
+});
+exports.CrearProductoSinTallas = CrearProductoSinTallas;

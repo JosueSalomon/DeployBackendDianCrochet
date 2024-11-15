@@ -76,5 +76,23 @@ class Admin {
             return data;
         });
     }
+    static CrearProductoSinTallas(nombre_prod, id_tipo_prod, precio, cantidad, descripcion, categorias, imagen_principal, imagen_miniaturas) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_create_producto', {
+                p_nombre_prod: nombre_prod,
+                p_id_tipo_prod: parseInt(id_tipo_prod),
+                p_precio: precio,
+                p_cantidad_total: cantidad,
+                p_descripcion: descripcion,
+                p_categorias: categorias,
+                p_url_imagen_principal: imagen_principal,
+                p_url_imagen_miniaturas: imagen_miniaturas
+            });
+            if (error) {
+                throw new Error(`Error al crear el producto: ${error.message}`);
+            }
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;

@@ -128,3 +128,35 @@ export const ActualizarEstadoOrden = async (req: Request, res: Response) => {
       res.status(500).json({ message: 'algo paso mal :(', error });
   }
 }
+
+export const CrearProductoSinTallas = async (req: Request, res: Response) => {
+  const {
+    nombre_prod,
+    id_tipo_prod,
+    precio,
+    cantidad,
+    descripcion,
+    categorias,
+    imagen_principal,
+    imagen_miniaturas
+  } = req.body;
+
+  try {
+    const NewProduct = await Admin.CrearProductoSinTallas(
+      nombre_prod,
+      id_tipo_prod,
+      precio,
+      cantidad,
+      descripcion,
+      categorias,
+      imagen_principal,
+      imagen_miniaturas
+    );
+    res.status(201).json({
+      NewProduct
+    });
+  } catch (error) {
+    console.log('Error con la creación del producto', error);
+    res.status(500).json({ message: 'Error con la creación del producto', error });
+  }
+};

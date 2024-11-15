@@ -55,4 +55,31 @@ export class Admin{
         }
         return data;
     }
-}
+
+    static async CrearProductoSinTallas(
+        nombre_prod: string,
+        id_tipo_prod: string,
+        precio: number,
+        cantidad: number,
+        descripcion: string,
+        categorias: string[],
+        imagen_principal: string, 
+        imagen_miniaturas: string[], 
+    ) {
+        const { data, error } = await supabase.rpc('p_create_producto', {
+            p_nombre_prod: nombre_prod,
+            p_id_tipo_prod: parseInt(id_tipo_prod), 
+            p_precio: precio,
+            p_cantidad_total: cantidad,
+            p_descripcion: descripcion,
+            p_categorias: categorias,
+            p_url_imagen_principal: imagen_principal,
+            p_url_imagen_miniaturas: imagen_miniaturas
+        });
+    
+        if (error) {
+            throw new Error(`Error al crear el producto: ${error.message}`);
+        }
+        return data;
+    }
+}    
