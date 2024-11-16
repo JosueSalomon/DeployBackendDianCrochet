@@ -1,7 +1,7 @@
 import express from 'express';
 import { insertarProductoCarrito, actualizarCarrito, eliminarProductoCarrito, obtenerCarrito, 
             obtenerSubtotalImpuestos, obtenerDepartamentos, getCiudades, getDeatlleFactura,
-            borrarCarrito, guardarPrecioEnvio } from '../Controllers/Factura.controller'
+            borrarCarrito, guardarPrecioEnvio,ConteoCarrito } from '../Controllers/Factura.controller'
 const router = express.Router();
 
 router.post('/carrito/insertar/actualizar', insertarProductoCarrito);
@@ -14,6 +14,8 @@ router.get('/ciudad/:idDepartamento', getCiudades);
 router.get('/detalle/:idfactura', getDeatlleFactura);
 router.delete('/eliminar/carrito/:idfactura', borrarCarrito);
 router.post('/envio', guardarPrecioEnvio);
+router.get('/carrito/conteo/:correo', ConteoCarrito);
+
 
 
 

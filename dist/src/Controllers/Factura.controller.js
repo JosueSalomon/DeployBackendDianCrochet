@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.guardarPrecioEnvio = exports.borrarCarrito = exports.getDeatlleFactura = exports.getCiudades = exports.obtenerDepartamentos = exports.obtenerSubtotalImpuestos = exports.obtenerCarrito = exports.eliminarProductoCarrito = exports.actualizarCarrito = exports.insertarProductoCarrito = void 0;
+exports.ConteoCarrito = exports.guardarPrecioEnvio = exports.borrarCarrito = exports.getDeatlleFactura = exports.getCiudades = exports.obtenerDepartamentos = exports.obtenerSubtotalImpuestos = exports.obtenerCarrito = exports.eliminarProductoCarrito = exports.actualizarCarrito = exports.insertarProductoCarrito = void 0;
 const Factura_model_1 = require("../Models/Factura.model");
 const insertarProductoCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -177,3 +177,17 @@ const guardarPrecioEnvio = (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.guardarPrecioEnvio = guardarPrecioEnvio;
+const ConteoCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { correo } = req.params;
+        const Conteo = yield Factura_model_1.Factura.ConteoCarrito(correo);
+        res.status(201).json({
+            Conteo
+        });
+    }
+    catch (error) {
+        console.log('error con fetch de conteo carrito', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+});
+exports.ConteoCarrito = ConteoCarrito;

@@ -172,3 +172,19 @@ export const guardarPrecioEnvio = async (req: Request, res: Response) => {
         });
     }
 };
+
+
+export const ConteoCarrito = async (req: Request, res: Response) => {
+    try {
+        const { correo } = req.params;
+        
+        const Conteo = await Factura.ConteoCarrito(correo)
+        
+        res.status(201).json({
+            Conteo
+        })
+    } catch (error) {
+        console.log('error con fetch de conteo carrito', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+};

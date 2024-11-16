@@ -177,9 +177,9 @@ export class Admin{
         imagen_miniaturas: string[], // Opcional, por defecto vacío
         size_quantities: Record<string, number | null>, // JSON de cantidades por grosor
         size_prices: Record<string, number | null> // JSON de precios por grosor
-      ) {
+            ){
         try {
-          const { data, error } = await supabase.rpc('p_create_material_grosor', {
+        const { data, error } = await supabase.rpc('p_create_material_grosor', {
             p_nombre_material: nombre_material,
             p_descripcion: descripcion,
             p_marca: marca,
@@ -187,28 +187,21 @@ export class Admin{
             p_size_quantities: size_quantities, // Cantidades por grosor
             p_size_prices: size_prices, // Precios por grosor
             p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas (opcional)
-          });
-      
-          if (error) {
+        });      
+        if (error) {
             throw new Error(`Error al crear el material: ${error.message}`);
-          }
-      
-          // Verificar el resultado del procedimiento
-          if (data.codigo !== 1) {
-            throw new Error(`Procedimiento falló: ${data.mensaje}`);
-          }
-      
-          return {
-            data
-          };
-        } catch (error: any) {
-          console.error(error.message);
-          throw new Error(`Error inesperado: ${error.message}`);
         }
-      }
-      
-    
-}
+            // Verificar el resultado del procedimiento
+            if (data.codigo !== 1) {
+            throw new Error(`Procedimiento falló: ${data.mensaje}`);
+        }
+        return {
+            data
+            };
+        } catch (error: any) {
+            console.error(error.message);
+            throw new Error(`Error inesperado: ${error.message}`);
+        }
+    }
 
-    
-  
+}

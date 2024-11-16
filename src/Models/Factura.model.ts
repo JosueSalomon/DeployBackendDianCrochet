@@ -128,4 +128,14 @@ export class Factura {
         }
         return data;
     }
+
+    static async ConteoCarrito(correo: string){
+        const{data, error} = await supabase.rpc('p_conteo_carrito',{
+            p_correo: correo
+        });
+        if(error){
+            throw error;
+        }
+        return data;
+    }
 }

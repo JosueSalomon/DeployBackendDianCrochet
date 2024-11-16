@@ -134,5 +134,16 @@ class Factura {
             return data;
         });
     }
+    static ConteoCarrito(correo) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_conteo_carrito', {
+                p_correo: correo
+            });
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
 }
 exports.Factura = Factura;

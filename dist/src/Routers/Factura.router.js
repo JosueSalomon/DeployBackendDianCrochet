@@ -16,4 +16,5 @@ router.get('/ciudad/:idDepartamento', Factura_controller_1.getCiudades);
 router.get('/detalle/:idfactura', Factura_controller_1.getDeatlleFactura);
 router.delete('/eliminar/carrito/:idfactura', Factura_controller_1.borrarCarrito);
 router.post('/envio', Factura_controller_1.guardarPrecioEnvio);
+router.get('/carrito/conteo/:correo', Factura_controller_1.ConteoCarrito);
 exports.default = router;
