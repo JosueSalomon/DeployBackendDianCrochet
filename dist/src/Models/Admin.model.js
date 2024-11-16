@@ -91,6 +91,7 @@ class Admin {
                 p_id_categoria: IdCategoria
             });
             if (error) {
+                throw error;
             }
             return data;
         });
