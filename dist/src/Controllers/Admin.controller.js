@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -152,3 +153,64 @@ const Obtener_productos_por_categoria_admin = (req, res) => __awaiter(void 0, vo
     }
 });
 exports.Obtener_productos_por_categoria_admin = Obtener_productos_por_categoria_admin;
+const CrearProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productName, price, stock, description, categories, mainImage, galleryImages } = req.body;
+    try {
+        const NewProduct = yield Admin_model_1.Admin.CrearProductoSinTallas(productName, price, stock, description, categories, mainImage, galleryImages);
+        res.status(201).json({
+            NewProduct
+        });
+    }
+    catch (error) {
+        console.log('Error con la creación del producto', error);
+        res.status(500).json({ message: 'Error con la creación del producto', error });
+    }
+});
+exports.CrearProductoSinTallas = CrearProductoSinTallas;
+const CrearProductoConTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
+    try {
+        // Llamar al método definido en la clase Admin
+        const NewProduct = yield Admin_model_1.Admin.CrearProductoConTallas(productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices);
+        // Respuesta exitosa
+        res.status(201).json({
+            NewProduct,
+        });
+    }
+    catch (error) {
+        // Respuesta con error
+        res.status(500).json({
+            message: 'Error al crear el producto',
+            error: error.message,
+        });
+    }
+});
+exports.CrearProductoConTallas = CrearProductoConTallas;
+const CrearMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productName, price, stock, description, categoryId, marca, mainImage, galleryImages } = req.body;
+    try {
+        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialSinTallas(productName, price, stock, description, categoryId, marca, mainImage, galleryImages);
+        res.status(201).json({
+            NewMaterial
+        });
+    }
+    catch (error) {
+        console.log('Error con la creación del material', error);
+        res.status(500).json({ message: 'Error con la creación del material', error });
+    }
+});
+exports.CrearMaterialSinTallas = CrearMaterialSinTallas;
+const CrearMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices } = req.body;
+    try {
+        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialConGrosor(productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices);
+        res.status(201).json({
+            NewMaterial
+        });
+    }
+    catch (error) {
+        console.log('Error con la creación del material', error);
+        res.status(500).json({ message: 'Error con la creación del material', error });
+    }
+});
+exports.CrearMaterialConGrosor = CrearMaterialConGrosor;

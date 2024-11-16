@@ -16,4 +16,8 @@ router.get('/factura/estados', Admin_controller_1.ObtenerEstdosFactura);
 router.put('/update/estado/:IdOrden', Admin_controller_1.ActualizarEstadoOrden);
 router.get('/productos', Admin_controller_1.Obtener_productos_admin);
 router.get('/prodcutos/categoria/:IdCategoria', Admin_controller_1.Obtener_productos_por_categoria_admin);
+router.post('/create/producto/sintalla', Admin_controller_1.CrearProductoSinTallas);
+router.post('/create/producto/contalla', Admin_controller_1.CrearProductoConTallas);
+router.post('/create/material/sintalla', Admin_controller_1.CrearMaterialSinTallas);
+router.post('/create/material/contalla', Admin_controller_1.CrearMaterialConGrosor);
 exports.default = router;

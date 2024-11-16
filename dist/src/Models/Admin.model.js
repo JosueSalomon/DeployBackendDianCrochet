@@ -91,9 +91,105 @@ class Admin {
                 p_id_categoria: IdCategoria
             });
             if (error) {
-                throw error;
             }
             return data;
+        });
+    }
+    static CrearProductoSinTallas(nombre_prod, precio, cantidad, descripcion, categorias, imagen_principal, imagen_miniaturas) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_create_producto', {
+                p_nombre_prod: nombre_prod,
+                p_precio: precio,
+                p_cantidad_total: cantidad,
+                p_descripcion: descripcion,
+                p_categorias: categorias,
+                p_url_imagen_principal: imagen_principal,
+                p_url_imagen_miniaturas: imagen_miniaturas
+            });
+            if (error) {
+                throw new Error(`Error al crear el producto: ${error.message}`);
+            }
+            return data;
+        });
+    }
+    static CrearProductoConTallas(nombre_prod, descripcion, categorias, imagen_principal, imagen_miniaturas, size_quantities, size_prices) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data, error } = yield conexion_1.default.rpc('p_create_producto_talla', {
+                    p_nombre_prod: nombre_prod, // Convertir ID de tipo a número
+                    p_descripcion: descripcion,
+                    p_categorias: categorias,
+                    p_url_imagen_principal: imagen_principal, // Default a un array vacío si es null
+                    p_size_quantities: size_quantities, // Objeto JSON con cantidades por talla
+                    p_size_prices: size_prices,
+                    p_url_imagen_miniaturas: imagen_miniaturas, // Objeto JSON con precios por talla
+                });
+                // Manejo de errores
+                if (error) {
+                    throw new Error(`Error al crear el producto: ${error.message}`);
+                }
+                // Validar si el procedimiento almacenado devolvió un mensaje de éxito o error
+                if (data.codigo !== 1) {
+                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
+                }
+                return {
+                    data
+                };
+            }
+            catch (error) {
+                console.error(error.message);
+                throw new Error(`Error inesperado: ${error.message}`);
+            }
+        });
+    }
+    static CrearMaterialSinTallas(nombre_material, precio, cantidad, descripcion, categoria, marca, imagen_principal, imagen_miniaturas) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_create_material_sintallas', {
+                p_nombre_material: nombre_material,
+                p_precio: precio,
+                p_cantidad_total: cantidad,
+                p_descripcion: descripcion,
+                p_categoria: categoria,
+                p_marca: marca,
+                p_url_imagen_principal: imagen_principal,
+                p_url_imagen_miniaturas: imagen_miniaturas, // Enviamos null si no hay miniaturas
+            });
+            if (error) {
+                throw new Error(`Error al crear el material: ${error.message}`);
+            }
+            return data;
+        });
+    }
+    static CrearMaterialConGrosor(nombre_material, descripcion, marca, imagen_principal, imagen_miniaturas, // Opcional, por defecto vacío
+    size_quantities, // JSON de cantidades por grosor
+    size_prices // JSON de precios por grosor
+    ) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data, error } = yield conexion_1.default.rpc('p_create_material_grosor', {
+                    p_nombre_material: nombre_material,
+                    p_descripcion: descripcion,
+                    p_marca: marca,
+                    p_url_imagen_principal: imagen_principal,
+                    p_size_quantities: size_quantities, // Cantidades por grosor
+                    p_size_prices: size_prices, // Precios por grosor
+                    p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas (opcional)
+                });
+                if (error) {
+                    throw new Error(`Error al crear el material: ${error.message}`);
+                }
+                // Verificar el resultado del procedimiento
+                if (data.codigo !== 1) {
+                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
+                }
+                return {
+                    data
+                };
+            }
+            catch (error) {
+                console.error(error.message);
+                throw new Error(`Error inesperado: ${error.message}`);
+            }
         });
     }
 }
