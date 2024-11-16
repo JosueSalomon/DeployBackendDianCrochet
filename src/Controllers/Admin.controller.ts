@@ -131,26 +131,24 @@ export const ActualizarEstadoOrden = async (req: Request, res: Response) => {
 
 export const CrearProductoSinTallas = async (req: Request, res: Response) => {
   const {
-    nombre_prod,
-    id_tipo_prod,
-    precio,
-    cantidad,
-    descripcion,
-    categorias,
-    imagen_principal,
-    imagen_miniaturas
+    productName,
+    price,
+    stock,
+    description,
+    categories,
+    mainImage,
+    galleryImages
   } = req.body;
 
   try {
     const NewProduct = await Admin.CrearProductoSinTallas(
-      nombre_prod,
-      id_tipo_prod,
-      precio,
-      cantidad,
-      descripcion,
-      categorias,
-      imagen_principal,
-      imagen_miniaturas
+      productName,
+      price,
+      stock,
+      description,
+      categories,
+      mainImage,
+      galleryImages
     );
     res.status(201).json({
       NewProduct
@@ -158,5 +156,103 @@ export const CrearProductoSinTallas = async (req: Request, res: Response) => {
   } catch (error) {
     console.log('Error con la creación del producto', error);
     res.status(500).json({ message: 'Error con la creación del producto', error });
+  }
+};
+
+export const CrearProductoConTallas = async (req: Request, res: Response) => {
+  const {
+    productName,
+    description,
+    categories,
+    mainImage,
+    galleryImages,
+    sizeQuantities,
+    sizePrices,
+  } = req.body;
+
+  try {
+    // Llamar al método definido en la clase Admin
+    const NewProduct = await Admin.CrearProductoConTallas(
+      productName,
+      description,
+      categories,
+      mainImage,
+      galleryImages,
+      sizeQuantities,
+      sizePrices
+    );
+
+    // Respuesta exitosa
+    res.status(201).json({
+      NewProduct,
+    });
+  } catch (error: any) {
+    // Respuesta con error
+    res.status(500).json({
+      message: 'Error al crear el producto',
+      error: error.message,
+    });
+  }
+};
+
+export const CrearMaterialSinTallas = async (req: Request, res: Response) => {
+  const {
+    productName,
+    price,
+    stock,
+    description,
+    categoryId,
+    marca,
+    mainImage,
+    galleryImages
+  } = req.body;
+
+  try {
+    const NewMaterial = await Admin.CrearMaterialSinTallas(
+      productName,
+      price,
+      stock,
+      description,
+      categoryId,
+      marca,
+      mainImage,
+      galleryImages
+    );
+    res.status(201).json({
+      NewMaterial
+    });
+  } catch (error) {
+    console.log('Error con la creación del material', error);
+    res.status(500).json({ message: 'Error con la creación del material', error });
+  }
+};
+
+export const CrearMaterialConGrosor = async (req: Request, res: Response) => {
+  const {
+    productName,
+    description,
+    marca,
+    mainImage,
+    galleryImages,
+    sizeQuantities,
+    sizePrices
+  } = req.body;
+
+  try {
+    const NewMaterial = await Admin.CrearMaterialConGrosor(
+      productName,
+      description,
+      marca,
+      mainImage,
+      galleryImages,
+      sizeQuantities,
+      sizePrices
+    );
+    res.status(201).json({
+      NewMaterial
+    });
+  } catch (error) {
+    console.log('Error con la creación del material', error);
+    res.status(500).json({ message: 'Error con la creación del material', error });
   }
 };

@@ -58,7 +58,6 @@ export class Admin{
 
     static async CrearProductoSinTallas(
         nombre_prod: string,
-        id_tipo_prod: string,
         precio: number,
         cantidad: number,
         descripcion: string,
@@ -68,7 +67,6 @@ export class Admin{
     ) {
         const { data, error } = await supabase.rpc('p_create_producto', {
             p_nombre_prod: nombre_prod,
-            p_id_tipo_prod: parseInt(id_tipo_prod), 
             p_precio: precio,
             p_cantidad_total: cantidad,
             p_descripcion: descripcion,
@@ -82,4 +80,115 @@ export class Admin{
         }
         return data;
     }
+
+    static async CrearProductoConTallas(
+        nombre_prod: string,
+        descripcion: string,
+        categorias: string[],
+        imagen_principal: string,
+        imagen_miniaturas: string[],
+        size_quantities: Record<string, number | null>,
+        size_prices: Record<string, number | null>
+    ) {
+        try {
+            const { data, error } = await supabase.rpc('p_create_producto_talla', {
+                p_nombre_prod: nombre_prod, // Convertir ID de tipo a número
+                p_descripcion: descripcion,
+                p_categorias: categorias,
+                p_url_imagen_principal: imagen_principal,// Default a un array vacío si es null
+                p_size_quantities: size_quantities, // Objeto JSON con cantidades por talla
+                p_size_prices: size_prices,
+                p_url_imagen_miniaturas: imagen_miniaturas, // Objeto JSON con precios por talla
+            });
+            
+
+    
+            // Manejo de errores
+            if (error) {
+                throw new Error(`Error al crear el producto: ${error.message}`);
+            }
+    
+            // Validar si el procedimiento almacenado devolvió un mensaje de éxito o error
+            if (data.codigo !== 1) {
+                throw new Error(`Procedimiento falló: ${data.mensaje}`);
+            }
+    
+            return {
+                data
+            };
+        } catch (error: any) {
+            console.error(error.message);
+            throw new Error(`Error inesperado: ${error.message}`);
+        }
+    }
+
+
+    static async CrearMaterialSinTallas(
+        nombre_material: string,
+        precio: number,
+        cantidad: number,
+        descripcion: string,
+        categoria: number,
+        marca: string,
+        imagen_principal: string,
+        imagen_miniaturas: string[], // Aquí aceptamos null o un arreglo de strings
+    ) {
+        const { data, error } = await supabase.rpc('p_create_material_sintallas', {
+            p_nombre_material: nombre_material,
+            p_precio: precio,
+            p_cantidad_total: cantidad,
+            p_descripcion: descripcion,
+            p_categoria: categoria,
+            p_marca: marca,
+            p_url_imagen_principal: imagen_principal,
+            p_url_imagen_miniaturas: imagen_miniaturas, // Enviamos null si no hay miniaturas
+        });
+    
+        if (error) {
+            throw new Error(`Error al crear el material: ${error.message}`);
+        }
+        return data;
+    }
+
+
+    static async CrearMaterialConGrosor(
+        nombre_material: string,
+        descripcion: string,
+        marca: string,
+        imagen_principal: string,
+        imagen_miniaturas: string[], // Opcional, por defecto vacío
+        size_quantities: Record<string, number | null>, // JSON de cantidades por grosor
+        size_prices: Record<string, number | null> // JSON de precios por grosor
+      ) {
+        try {
+          const { data, error } = await supabase.rpc('p_create_material_grosor', {
+            p_nombre_material: nombre_material,
+            p_descripcion: descripcion,
+            p_marca: marca,
+            p_url_imagen_principal: imagen_principal,
+            p_size_quantities: size_quantities, // Cantidades por grosor
+            p_size_prices: size_prices, // Precios por grosor
+            p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas (opcional)
+          });
+      
+          if (error) {
+            throw new Error(`Error al crear el material: ${error.message}`);
+          }
+      
+          // Verificar el resultado del procedimiento
+          if (data.codigo !== 1) {
+            throw new Error(`Procedimiento falló: ${data.mensaje}`);
+          }
+      
+          return {
+            data
+          };
+        } catch (error: any) {
+          console.error(error.message);
+          throw new Error(`Error inesperado: ${error.message}`);
+        }
+      }
+      
+    
+    
 }    

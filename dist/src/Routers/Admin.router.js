@@ -15,4 +15,7 @@ router.post('/ordenes', Admin_controller_1.ObtenerOrdenes);
 router.get('/factura/estados', Admin_controller_1.ObtenerEstdosFactura);
 router.put('/update/estado/:IdOrden', Admin_controller_1.ActualizarEstadoOrden);
 router.post('/create/producto/sintalla', Admin_controller_1.CrearProductoSinTallas);
+router.post('/create/producto/contalla', Admin_controller_1.CrearProductoConTallas);
+router.post('/create/material/sintalla', Admin_controller_1.CrearMaterialSinTallas);
+router.post('/create/material/contalla', Admin_controller_1.CrearMaterialConGrosor);
 exports.default = router;
