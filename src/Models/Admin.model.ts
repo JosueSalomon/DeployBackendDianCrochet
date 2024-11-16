@@ -79,7 +79,7 @@ export class Admin{
         precio: number,
         cantidad: number,
         descripcion: string,
-        categorias: string[],
+        categorias: number[],
         imagen_principal: string, 
         imagen_miniaturas: string[], 
     ) {
@@ -102,7 +102,7 @@ export class Admin{
     static async CrearProductoConTallas(
         nombre_prod: string,
         descripcion: string,
-        categorias: string[],
+        categorias: number[],
         imagen_principal: string,
         imagen_miniaturas: string[],
         size_quantities: Record<string, number | null>,
