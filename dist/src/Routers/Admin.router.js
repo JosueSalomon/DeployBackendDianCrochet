@@ -21,4 +21,8 @@ router.post('/create/producto/contalla', Admin_controller_1.CrearProductoConTall
 router.post('/create/material/sintalla', Admin_controller_1.CrearMaterialSinTallas);
 router.post('/create/material/contalla', Admin_controller_1.CrearMaterialConGrosor);
 router.get('/get/producto/:IdProducto', Admin_controller_1.ObtenerProductoAdmin);
+router.put('/update/producto/sintalla/:productId', Admin_controller_1.ActualizarProductoSinTallas);
+router.put('/update/producto/contalla/:productId', Admin_controller_1.ActualizarProductoConTallas);
+router.put('/update/material/sintalla/:materialId', Admin_controller_1.ActualizarMaterialSinTallas);
+router.put('/update/material/contalla/:materialId', Admin_controller_1.ActualizarMaterialConGrosor);
 exports.default = router;

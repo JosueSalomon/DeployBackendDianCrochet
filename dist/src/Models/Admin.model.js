@@ -204,5 +204,133 @@ class Admin {
             return data;
         });
     }
+    static ActualizarProductoSinTalla(id_producto_1, nombre_prod_1, precio_1, cantidad_total_1, descripcion_1, categorias_1, url_imagen_principal_1) {
+        return __awaiter(this, arguments, void 0, function* (id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas = []) {
+            try {
+                const { data, error } = yield conexion_1.default.rpc('p_update_producto', {
+                    p_id_producto: id_producto,
+                    p_nombre_prod: nombre_prod,
+                    p_precio: precio,
+                    p_cantidad_total: cantidad_total,
+                    p_descripcion: descripcion,
+                    p_categorias: categorias,
+                    p_url_imagen_principal: url_imagen_principal,
+                    p_url_imagen_miniaturas: url_imagen_miniaturas,
+                });
+                if (error) {
+                    throw new Error(`Error al actualizar el producto: ${error.message}`);
+                }
+                // Verificar el resultado del procedimiento
+                if (data.codigo !== 1) {
+                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
+                }
+                return {
+                    mensaje: data.mensaje,
+                    productoActualizado: data.query_result,
+                };
+            }
+            catch (error) {
+                console.error(error.message);
+                throw new Error(`Error inesperado: ${error.message}`);
+            }
+        });
+    }
+    static ActualizarProductoConTallas(id_producto_1, nombre_prod_1, descripcion_1, categorias_1, url_imagen_principal_1, size_quantities_1, size_prices_1) {
+        return __awaiter(this, arguments, void 0, function* (id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, size_quantities, size_prices, url_imagen_miniaturas = []) {
+            try {
+                const { data, error } = yield conexion_1.default.rpc('p_update_producto_talla', {
+                    p_id_producto: id_producto,
+                    p_nombre_prod: nombre_prod,
+                    p_descripcion: descripcion,
+                    p_categorias: categorias,
+                    p_url_imagen_principal: url_imagen_principal,
+                    p_size_quantities: size_quantities, // JSON con cantidades por talla
+                    p_size_prices: size_prices, // JSON con precios por talla
+                    p_url_imagen_miniaturas: url_imagen_miniaturas, // Miniaturas
+                });
+                if (error) {
+                    throw new Error(`Error al actualizar el producto con tallas: ${error.message}`);
+                }
+                // Verificar el resultado del procedimiento
+                if (data.codigo !== 1) {
+                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
+                }
+                return {
+                    mensaje: data.mensaje,
+                    productoActualizado: data.query_result,
+                };
+            }
+            catch (error) {
+                console.error(error.message);
+                throw new Error(`Error inesperado: ${error.message}`);
+            }
+        });
+    }
+    static ActualizarMaterialSinTallas(id_material_1, nombre_material_1, precio_1, cantidad_1, descripcion_1, categoria_1, marca_1, url_imagen_principal_1) {
+        return __awaiter(this, arguments, void 0, function* (id_material, nombre_material, precio, cantidad, descripcion, categoria, marca, url_imagen_principal, url_imagen_miniaturas = []) {
+            try {
+                const { data, error } = yield conexion_1.default.rpc('p_update_material_sintallas', {
+                    p_id_material: id_material,
+                    p_nombre_material: nombre_material,
+                    p_precio: precio,
+                    p_cantidad_total: cantidad,
+                    p_descripcion: descripcion,
+                    p_categoria: categoria,
+                    p_marca: marca,
+                    p_url_imagen_principal: url_imagen_principal,
+                    p_url_imagen_miniaturas: url_imagen_miniaturas,
+                });
+                if (error) {
+                    throw new Error(`Error al actualizar el material: ${error.message}`);
+                }
+                // Verificar el resultado del procedimiento
+                if (data.codigo !== 1) {
+                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
+                }
+                return {
+                    mensaje: data.mensaje,
+                    materialActualizado: data.query_result,
+                };
+            }
+            catch (error) {
+                console.error(error.message);
+                throw new Error(`Error inesperado: ${error.message}`);
+            }
+        });
+    }
+    static ActualizarMaterialConGrosor(id_material, nombre_material, descripcion, marca, imagen_principal, imagen_miniaturas, // Opcional
+    size_quantities, // JSON de cantidades por grosor
+    size_prices // JSON de precios por grosor
+    ) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data, error } = yield conexion_1.default.rpc('p_update_material_grosor', {
+                    p_id_material: id_material,
+                    p_nombre_material: nombre_material,
+                    p_descripcion: descripcion,
+                    p_marca: marca,
+                    p_url_imagen_principal: imagen_principal,
+                    p_size_quantities: size_quantities, // Cantidades por grosor
+                    p_size_prices: size_prices, // Precios por grosor
+                    p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas
+                });
+                if (error) {
+                    throw new Error(`Error al actualizar el material: ${error.message}`);
+                }
+                // Verificar el resultado del procedimiento
+                if (data.codigo !== 1) {
+                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
+                }
+                return {
+                    mensaje: data.mensaje,
+                    materialActualizado: data.query_result,
+                };
+            }
+            catch (error) {
+                console.error(error.message);
+                throw new Error(`Error inesperado: ${error.message}`);
+            }
+        });
+    }
 }
 exports.Admin = Admin;

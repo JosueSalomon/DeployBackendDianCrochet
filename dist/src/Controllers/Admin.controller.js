@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.ActualizarMaterialConGrosor = exports.ActualizarMaterialSinTallas = exports.ActualizarProductoConTallas = exports.ActualizarProductoSinTallas = exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -227,3 +227,61 @@ const ObtenerProductoAdmin = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.ObtenerProductoAdmin = ObtenerProductoAdmin;
+const ActualizarProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productId, productName, price, stock, description, categories, mainImage, galleryImages } = req.body;
+    try {
+        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoSinTalla(productId, productName, price, stock, description, categories, mainImage, galleryImages);
+        res.status(200).json({
+            updatedProduct
+        });
+    }
+    catch (error) {
+        console.log('Error con la actualización del producto sin tallas', error);
+        res.status(500).json({ message: 'Error con la actualización del producto sin tallas', error });
+    }
+});
+exports.ActualizarProductoSinTallas = ActualizarProductoSinTallas;
+const ActualizarProductoConTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productId, productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
+    try {
+        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoConTallas(productId, productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices);
+        res.status(200).json({
+            updatedProduct,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            message: 'Error al actualizar el producto con tallas',
+            error: error.message,
+        });
+    }
+});
+exports.ActualizarProductoConTallas = ActualizarProductoConTallas;
+const ActualizarMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { materialId, productName, price, stock, description, categoryId, marca, mainImage, galleryImages } = req.body;
+    try {
+        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialSinTallas(materialId, productName, price, stock, description, categoryId, marca, mainImage, galleryImages);
+        res.status(200).json({
+            updatedMaterial
+        });
+    }
+    catch (error) {
+        console.log('Error con la actualización del material sin tallas', error);
+        res.status(500).json({ message: 'Error con la actualización del material sin tallas', error });
+    }
+});
+exports.ActualizarMaterialSinTallas = ActualizarMaterialSinTallas;
+const ActualizarMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { materialId, productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices } = req.body;
+    try {
+        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialConGrosor(materialId, productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices);
+        res.status(200).json({
+            updatedMaterial
+        });
+    }
+    catch (error) {
+        console.log('Error con la actualización del material con grosor', error);
+        res.status(500).json({ message: 'Error con la actualización del material con grosor', error });
+    }
+});
+exports.ActualizarMaterialConGrosor = ActualizarMaterialConGrosor;

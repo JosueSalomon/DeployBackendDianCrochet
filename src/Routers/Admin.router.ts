@@ -7,7 +7,11 @@ import { uploadImage,LoginAdmin,DetalleOrdenProdcuto,DetalleOrdenCliente,Obtener
     CrearProductoConTallas,
     CrearMaterialSinTallas,
     CrearMaterialConGrosor,
-    ObtenerProductoAdmin
+    ObtenerProductoAdmin,
+    ActualizarMaterialConGrosor,
+    ActualizarMaterialSinTallas,
+    ActualizarProductoConTallas,
+    ActualizarProductoSinTallas
 } from '../Controllers/Admin.controller'; 
 
 const router = Router();
@@ -34,6 +38,10 @@ router.post('/create/material/contalla', CrearMaterialConGrosor);
 
 router.get('/get/producto/:IdProducto', ObtenerProductoAdmin);
 
+router.put('/update/producto/sintalla/:productId', ActualizarProductoSinTallas);
+router.put('/update/producto/contalla/:productId', ActualizarProductoConTallas);
+router.put('/update/material/sintalla/:materialId', ActualizarMaterialSinTallas);
+router.put('/update/material/contalla/:materialId', ActualizarMaterialConGrosor);
 
 
 

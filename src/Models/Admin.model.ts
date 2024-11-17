@@ -215,6 +215,174 @@ export class Admin{
     
         return data;
     }
+
+    static async ActualizarProductoSinTalla(
+        id_producto: number,
+        nombre_prod: string,
+        precio: number,
+        cantidad_total: number,
+        descripcion: string,
+        categorias: number[],
+        url_imagen_principal: string,
+        url_imagen_miniaturas: string[] = []
+    ) {
+        try {
+            const { data, error } = await supabase.rpc('p_update_producto', {
+                p_id_producto: id_producto,
+                p_nombre_prod: nombre_prod,
+                p_precio: precio,
+                p_cantidad_total: cantidad_total,
+                p_descripcion: descripcion,
+                p_categorias: categorias,
+                p_url_imagen_principal: url_imagen_principal,
+                p_url_imagen_miniaturas: url_imagen_miniaturas,
+            });
+    
+            if (error) {
+                throw new Error(`Error al actualizar el producto: ${error.message}`);
+            }
+    
+            // Verificar el resultado del procedimiento
+            if (data.codigo !== 1) {
+                throw new Error(`Procedimiento falló: ${data.mensaje}`);
+            }
+    
+            return {
+                mensaje: data.mensaje,
+                productoActualizado: data.query_result,
+            };
+        } catch (error: any) {
+            console.error(error.message);
+            throw new Error(`Error inesperado: ${error.message}`);
+        }
+    }
+
+    static async ActualizarProductoConTallas(
+        id_producto: number,
+        nombre_prod: string,
+        descripcion: string,
+        categorias: number[],
+        url_imagen_principal: string,
+        size_quantities: Record<string, number | null>,
+        size_prices: Record<string, number | null>,
+        url_imagen_miniaturas: string[] = []
+    ) {
+        try {
+            const { data, error } = await supabase.rpc('p_update_producto_talla', {
+                p_id_producto: id_producto,
+                p_nombre_prod: nombre_prod,
+                p_descripcion: descripcion,
+                p_categorias: categorias,
+                p_url_imagen_principal: url_imagen_principal,
+                p_size_quantities: size_quantities, // JSON con cantidades por talla
+                p_size_prices: size_prices, // JSON con precios por talla
+                p_url_imagen_miniaturas: url_imagen_miniaturas, // Miniaturas
+            });
+    
+            if (error) {
+                throw new Error(`Error al actualizar el producto con tallas: ${error.message}`);
+            }
+    
+            // Verificar el resultado del procedimiento
+            if (data.codigo !== 1) {
+                throw new Error(`Procedimiento falló: ${data.mensaje}`);
+            }
+    
+            return {
+                mensaje: data.mensaje,
+                productoActualizado: data.query_result,
+            };
+        } catch (error: any) {
+            console.error(error.message);
+            throw new Error(`Error inesperado: ${error.message}`);
+        }
+    }
+    
+    static async ActualizarMaterialSinTallas(
+        id_material: number,
+        nombre_material: string,
+        precio: number,
+        cantidad: number,
+        descripcion: string,
+        categoria: number,
+        marca: string,
+        url_imagen_principal: string,
+        url_imagen_miniaturas: string[] = []
+    ) {
+        try {
+            const { data, error } = await supabase.rpc('p_update_material_sintallas', {
+                p_id_material: id_material,
+                p_nombre_material: nombre_material,
+                p_precio: precio,
+                p_cantidad_total: cantidad,
+                p_descripcion: descripcion,
+                p_categoria: categoria,
+                p_marca: marca,
+                p_url_imagen_principal: url_imagen_principal,
+                p_url_imagen_miniaturas: url_imagen_miniaturas,
+            });
+    
+            if (error) {
+                throw new Error(`Error al actualizar el material: ${error.message}`);
+            }
+    
+            // Verificar el resultado del procedimiento
+            if (data.codigo !== 1) {
+                throw new Error(`Procedimiento falló: ${data.mensaje}`);
+            }
+    
+            return {
+                mensaje: data.mensaje,
+                materialActualizado: data.query_result,
+            };
+        } catch (error: any) {
+            console.error(error.message);
+            throw new Error(`Error inesperado: ${error.message}`);
+        }
+    }
+    
+    static async ActualizarMaterialConGrosor(
+        id_material: number,
+        nombre_material: string,
+        descripcion: string,
+        marca: string,
+        imagen_principal: string,
+        imagen_miniaturas: string[], // Opcional
+        size_quantities: Record<string, number | null>, // JSON de cantidades por grosor
+        size_prices: Record<string, number | null> // JSON de precios por grosor
+    ) {
+        try {
+            const { data, error } = await supabase.rpc('p_update_material_grosor', {
+                p_id_material: id_material,
+                p_nombre_material: nombre_material,
+                p_descripcion: descripcion,
+                p_marca: marca,
+                p_url_imagen_principal: imagen_principal,
+                p_size_quantities: size_quantities, // Cantidades por grosor
+                p_size_prices: size_prices, // Precios por grosor
+                p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas
+            });
+    
+            if (error) {
+                throw new Error(`Error al actualizar el material: ${error.message}`);
+            }
+    
+            // Verificar el resultado del procedimiento
+            if (data.codigo !== 1) {
+                throw new Error(`Procedimiento falló: ${data.mensaje}`);
+            }
+    
+            return {
+                mensaje: data.mensaje,
+                materialActualizado: data.query_result,
+            };
+        } catch (error: any) {
+            console.error(error.message);
+            throw new Error(`Error inesperado: ${error.message}`);
+        }
+    }
+    
+    
     
     
 

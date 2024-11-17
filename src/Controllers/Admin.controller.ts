@@ -301,3 +301,137 @@ export const ObtenerProductoAdmin = async (req: Request, res: Response) => {
       res.status(500).json({ message: 'Ocurrió un error al obtener la información del producto', error });
   }
 };
+
+export const ActualizarProductoSinTallas = async (req: Request, res: Response) => {
+  const {
+    productId,
+    productName,
+    price,
+    stock,
+    description,
+    categories,
+    mainImage,
+    galleryImages
+  } = req.body;
+
+  try {
+    const updatedProduct = await Admin.ActualizarProductoSinTalla(
+      productId,
+      productName,
+      price,
+      stock,
+      description,
+      categories,
+      mainImage,
+      galleryImages
+    );
+
+    res.status(200).json({
+      updatedProduct
+    });
+  } catch (error) {
+    console.log('Error con la actualización del producto sin tallas', error);
+    res.status(500).json({ message: 'Error con la actualización del producto sin tallas', error });
+  }
+};
+
+export const ActualizarProductoConTallas = async (req: Request, res: Response) => {
+  const {
+    productId,
+    productName,
+    description,
+    categories,
+    mainImage,
+    galleryImages,
+    sizeQuantities,
+    sizePrices,
+  } = req.body;
+
+  try {
+    const updatedProduct = await Admin.ActualizarProductoConTallas(
+      productId,
+      productName,
+      description,
+      categories,
+      mainImage,
+      galleryImages,
+      sizeQuantities,
+      sizePrices
+    );
+
+    res.status(200).json({
+      updatedProduct,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: 'Error al actualizar el producto con tallas',
+      error: error.message,
+    });
+  }
+};
+
+export const ActualizarMaterialSinTallas = async (req: Request, res: Response) => {
+  const {
+    materialId,
+    productName,
+    price,
+    stock,
+    description,
+    categoryId,
+    marca,
+    mainImage,
+    galleryImages
+  } = req.body;
+
+  try {
+    const updatedMaterial = await Admin.ActualizarMaterialSinTallas(
+      materialId,
+      productName,
+      price,
+      stock,
+      description,
+      categoryId,
+      marca,
+      mainImage,
+      galleryImages
+    );
+    res.status(200).json({
+      updatedMaterial
+    });
+  } catch (error) {
+    console.log('Error con la actualización del material sin tallas', error);
+    res.status(500).json({ message: 'Error con la actualización del material sin tallas', error });
+  }
+};
+
+export const ActualizarMaterialConGrosor = async (req: Request, res: Response) => {
+  const {
+    materialId,
+    productName,
+    description,
+    marca,
+    mainImage,
+    galleryImages,
+    sizeQuantities,
+    sizePrices
+  } = req.body;
+
+  try {
+    const updatedMaterial = await Admin.ActualizarMaterialConGrosor(
+      materialId,
+      productName,
+      description,
+      marca,
+      mainImage,
+      galleryImages,
+      sizeQuantities,
+      sizePrices
+    );
+    res.status(200).json({
+      updatedMaterial
+    });
+  } catch (error) {
+    console.log('Error con la actualización del material con grosor', error);
+    res.status(500).json({ message: 'Error con la actualización del material con grosor', error });
+  }
+};
