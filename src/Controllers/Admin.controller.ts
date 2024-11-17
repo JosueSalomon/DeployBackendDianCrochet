@@ -303,8 +303,8 @@ export const ObtenerProductoAdmin = async (req: Request, res: Response) => {
 };
 
 export const ActualizarProductoSinTallas = async (req: Request, res: Response) => {
+  const { productId } = req.params;
   const {
-    productId,
     productName,
     price,
     stock,
@@ -316,7 +316,7 @@ export const ActualizarProductoSinTallas = async (req: Request, res: Response) =
 
   try {
     const updatedProduct = await Admin.ActualizarProductoSinTalla(
-      productId,
+      parseInt(productId),
       productName,
       price,
       stock,
@@ -336,8 +336,8 @@ export const ActualizarProductoSinTallas = async (req: Request, res: Response) =
 };
 
 export const ActualizarProductoConTallas = async (req: Request, res: Response) => {
+  const { productId } = req.params;
   const {
-    productId,
     productName,
     description,
     categories,
@@ -349,7 +349,7 @@ export const ActualizarProductoConTallas = async (req: Request, res: Response) =
 
   try {
     const updatedProduct = await Admin.ActualizarProductoConTallas(
-      productId,
+      parseInt(productId),
       productName,
       description,
       categories,
@@ -371,8 +371,8 @@ export const ActualizarProductoConTallas = async (req: Request, res: Response) =
 };
 
 export const ActualizarMaterialSinTallas = async (req: Request, res: Response) => {
+  const { materialId } = req.params;
   const {
-    materialId,
     productName,
     price,
     stock,
@@ -385,7 +385,7 @@ export const ActualizarMaterialSinTallas = async (req: Request, res: Response) =
 
   try {
     const updatedMaterial = await Admin.ActualizarMaterialSinTallas(
-      materialId,
+      parseInt(materialId),
       productName,
       price,
       stock,
@@ -405,8 +405,8 @@ export const ActualizarMaterialSinTallas = async (req: Request, res: Response) =
 };
 
 export const ActualizarMaterialConGrosor = async (req: Request, res: Response) => {
+  const { materialId } = req.params;
   const {
-    materialId,
     productName,
     description,
     marca,
@@ -418,7 +418,7 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
 
   try {
     const updatedMaterial = await Admin.ActualizarMaterialConGrosor(
-      materialId,
+      parseInt(materialId),
       productName,
       description,
       marca,

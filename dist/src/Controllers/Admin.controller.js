@@ -228,9 +228,10 @@ const ObtenerProductoAdmin = (req, res) => __awaiter(void 0, void 0, void 0, fun
 });
 exports.ObtenerProductoAdmin = ObtenerProductoAdmin;
 const ActualizarProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { productId, productName, price, stock, description, categories, mainImage, galleryImages } = req.body;
+    const { productId } = req.params;
+    const { productName, price, stock, description, categories, mainImage, galleryImages } = req.body;
     try {
-        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoSinTalla(productId, productName, price, stock, description, categories, mainImage, galleryImages);
+        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoSinTalla(parseInt(productId), productName, price, stock, description, categories, mainImage, galleryImages);
         res.status(200).json({
             updatedProduct
         });
@@ -242,9 +243,10 @@ const ActualizarProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void
 });
 exports.ActualizarProductoSinTallas = ActualizarProductoSinTallas;
 const ActualizarProductoConTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { productId, productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
+    const { productId } = req.params;
+    const { productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
     try {
-        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoConTallas(productId, productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices);
+        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoConTallas(parseInt(productId), productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices);
         res.status(200).json({
             updatedProduct,
         });
@@ -258,9 +260,10 @@ const ActualizarProductoConTallas = (req, res) => __awaiter(void 0, void 0, void
 });
 exports.ActualizarProductoConTallas = ActualizarProductoConTallas;
 const ActualizarMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { materialId, productName, price, stock, description, categoryId, marca, mainImage, galleryImages } = req.body;
+    const { materialId } = req.params;
+    const { productName, price, stock, description, categoryId, marca, mainImage, galleryImages } = req.body;
     try {
-        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialSinTallas(materialId, productName, price, stock, description, categoryId, marca, mainImage, galleryImages);
+        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialSinTallas(parseInt(materialId), productName, price, stock, description, categoryId, marca, mainImage, galleryImages);
         res.status(200).json({
             updatedMaterial
         });
@@ -272,9 +275,10 @@ const ActualizarMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void
 });
 exports.ActualizarMaterialSinTallas = ActualizarMaterialSinTallas;
 const ActualizarMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { materialId, productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices } = req.body;
+    const { materialId } = req.params;
+    const { productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices } = req.body;
     try {
-        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialConGrosor(materialId, productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices);
+        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialConGrosor(parseInt(materialId), productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices);
         res.status(200).json({
             updatedMaterial
         });
