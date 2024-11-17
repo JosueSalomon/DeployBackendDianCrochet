@@ -193,5 +193,16 @@ class Admin {
             }
         });
     }
+    static ObtenerProductoInfo(IdProducto) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('get_producto_admin', {
+                p_id_producto: IdProducto,
+            });
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;

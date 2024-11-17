@@ -204,4 +204,18 @@ export class Admin{
         }
     }
 
+    static async ObtenerProductoInfo(IdProducto: number) {
+        const { data, error } = await supabase.rpc('get_producto_admin', {
+            p_id_producto: IdProducto,
+        });
+    
+        if (error) {
+            throw error;
+        }
+    
+        return data;
+    }
+    
+    
+
 }

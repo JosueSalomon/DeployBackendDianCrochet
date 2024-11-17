@@ -20,4 +20,5 @@ router.post('/create/producto/sintalla', Admin_controller_1.CrearProductoSinTall
 router.post('/create/producto/contalla', Admin_controller_1.CrearProductoConTallas);
 router.post('/create/material/sintalla', Admin_controller_1.CrearMaterialSinTallas);
 router.post('/create/material/contalla', Admin_controller_1.CrearMaterialConGrosor);
+router.get('/get/producto/:IdProducto', Admin_controller_1.ObtenerProductoAdmin);
 exports.default = router;

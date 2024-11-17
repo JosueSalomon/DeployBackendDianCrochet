@@ -6,7 +6,8 @@ import { uploadImage,LoginAdmin,DetalleOrdenProdcuto,DetalleOrdenCliente,Obtener
     CrearProductoSinTallas,
     CrearProductoConTallas,
     CrearMaterialSinTallas,
-    CrearMaterialConGrosor
+    CrearMaterialConGrosor,
+    ObtenerProductoAdmin
 } from '../Controllers/Admin.controller'; 
 
 const router = Router();
@@ -29,6 +30,9 @@ router.post('/create/producto/sintalla', CrearProductoSinTallas);
 router.post('/create/producto/contalla', CrearProductoConTallas);
 router.post('/create/material/sintalla', CrearMaterialSinTallas);
 router.post('/create/material/contalla', CrearMaterialConGrosor);
+
+
+router.get('/get/producto/:IdProducto', ObtenerProductoAdmin);
 
 
 

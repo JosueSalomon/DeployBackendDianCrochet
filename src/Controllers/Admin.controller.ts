@@ -286,3 +286,18 @@ export const CrearMaterialConGrosor = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error con la creación del material', error });
   }
 };
+
+export const ObtenerProductoAdmin = async (req: Request, res: Response) => {
+  const { IdProducto } = req.params;
+
+  try {
+      const productoInfo = await Admin.ObtenerProductoInfo(Number(IdProducto));
+
+      res.status(200).json({
+          productoInfo,
+      });
+  } catch (error) {
+      console.error('Error al obtener información del producto:', error);
+      res.status(500).json({ message: 'Ocurrió un error al obtener la información del producto', error });
+  }
+};

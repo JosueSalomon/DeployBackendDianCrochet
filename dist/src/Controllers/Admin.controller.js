@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -213,3 +213,17 @@ const CrearMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.CrearMaterialConGrosor = CrearMaterialConGrosor;
+const ObtenerProductoAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { IdProducto } = req.params;
+    try {
+        const productoInfo = yield Admin_model_1.Admin.ObtenerProductoInfo(Number(IdProducto));
+        res.status(200).json({
+            productoInfo,
+        });
+    }
+    catch (error) {
+        console.error('Error al obtener información del producto:', error);
+        res.status(500).json({ message: 'Ocurrió un error al obtener la información del producto', error });
+    }
+});
+exports.ObtenerProductoAdmin = ObtenerProductoAdmin;
