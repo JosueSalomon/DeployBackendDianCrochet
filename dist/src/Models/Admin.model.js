@@ -207,6 +207,7 @@ class Admin {
     static ActualizarProductoSinTalla(id_producto_1, nombre_prod_1, precio_1, cantidad_total_1, descripcion_1, categorias_1, url_imagen_principal_1) {
         return __awaiter(this, arguments, void 0, function* (id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas = []) {
             try {
+                console.log(id_producto, categorias, url_imagen_miniaturas);
                 const { data, error } = yield conexion_1.default.rpc('p_update_producto', {
                     p_id_producto: id_producto,
                     p_nombre_prod: nombre_prod,

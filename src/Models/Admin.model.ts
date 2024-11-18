@@ -224,9 +224,10 @@ export class Admin{
         descripcion: string,
         categorias: number[],
         url_imagen_principal: string,
-        url_imagen_miniaturas: string[] = []
+        url_imagen_miniaturas: string[]
     ) {
         try {
+            console.log(id_producto, categorias, url_imagen_miniaturas)
             const { data, error } = await supabase.rpc('p_update_producto', {
                 p_id_producto: id_producto,
                 p_nombre_prod: nombre_prod,
@@ -265,7 +266,7 @@ export class Admin{
         url_imagen_principal: string,
         size_quantities: Record<string, number | null>,
         size_prices: Record<string, number | null>,
-        url_imagen_miniaturas: string[] = []
+        url_imagen_miniaturas: string[]
     ) {
         try {
             const { data, error } = await supabase.rpc('p_update_producto_talla', {
@@ -307,7 +308,7 @@ export class Admin{
         categoria: number,
         marca: string,
         url_imagen_principal: string,
-        url_imagen_miniaturas: string[] = []
+        url_imagen_miniaturas: string[]
     ) {
         try {
             const { data, error } = await supabase.rpc('p_update_material_sintallas', {
