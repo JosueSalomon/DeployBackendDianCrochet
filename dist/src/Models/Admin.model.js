@@ -204,8 +204,8 @@ class Admin {
             return data;
         });
     }
-    static ActualizarProductoSinTalla(id_producto_1, nombre_prod_1, precio_1, cantidad_total_1, descripcion_1, categorias_1, url_imagen_principal_1) {
-        return __awaiter(this, arguments, void 0, function* (id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas = []) {
+    static ActualizarProductoSinTalla(id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
                 console.log(id_producto, categorias, url_imagen_miniaturas);
                 const { data, error } = yield conexion_1.default.rpc('p_update_producto', {
@@ -236,8 +236,8 @@ class Admin {
             }
         });
     }
-    static ActualizarProductoConTallas(id_producto_1, nombre_prod_1, descripcion_1, categorias_1, url_imagen_principal_1, size_quantities_1, size_prices_1) {
-        return __awaiter(this, arguments, void 0, function* (id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, size_quantities, size_prices, url_imagen_miniaturas = []) {
+    static ActualizarProductoConTallas(id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, size_quantities, size_prices, url_imagen_miniaturas) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error } = yield conexion_1.default.rpc('p_update_producto_talla', {
                     p_id_producto: id_producto,
@@ -267,8 +267,8 @@ class Admin {
             }
         });
     }
-    static ActualizarMaterialSinTallas(id_material_1, nombre_material_1, precio_1, cantidad_1, descripcion_1, categoria_1, marca_1, url_imagen_principal_1) {
-        return __awaiter(this, arguments, void 0, function* (id_material, nombre_material, precio, cantidad, descripcion, categoria, marca, url_imagen_principal, url_imagen_miniaturas = []) {
+    static ActualizarMaterialSinTallas(id_material, nombre_material, precio, cantidad, descripcion, categoria, marca, url_imagen_principal, url_imagen_miniaturas) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error } = yield conexion_1.default.rpc('p_update_material_sintallas', {
                     p_id_material: id_material,
