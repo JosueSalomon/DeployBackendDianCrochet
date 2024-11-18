@@ -250,7 +250,9 @@ export class Admin{
             throw new Error(`Procedimiento falló: ${data.mensaje}`);
         }
         return {
-            data
+            codigo: data.codigo,
+            mensaje: data.mensaje,
+            producto: data.query_result,
             };
         } catch (error: any) {
             console.error(error.message);
@@ -391,6 +393,7 @@ export class Admin{
             }
     
             return {
+                codigo: data.codigo,
                 mensaje: data.mensaje,
                 materialActualizado: data.query_result,
             };
