@@ -134,7 +134,41 @@ class Admin {
                     throw new Error(`Procedimiento falló: ${data.mensaje}`);
                 }
                 return {
-                    data
+                    codigo: data.codigo,
+                    mensaje: data.mensaje,
+                    productoCreado: data.query_result,
+                };
+            }
+            catch (error) {
+                console.error(error.message);
+                throw new Error(`Error inesperado: ${error.message}`);
+            }
+        });
+    }
+    static ActualizarProductoConTallas(id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas, size_quantities, size_prices) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                console.log(id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, size_quantities, size_prices, url_imagen_miniaturas);
+                const { data, error } = yield conexion_1.default.rpc('p_update_producto_talla', {
+                    p_id_producto: id_producto,
+                    p_nombre_prod: nombre_prod,
+                    p_descripcion: descripcion,
+                    p_categorias: categorias,
+                    p_url_imagen_principal: url_imagen_principal,
+                    p_size_quantities: size_quantities,
+                    p_size_prices: size_prices,
+                    p_url_imagen_miniaturas: url_imagen_miniaturas,
+                });
+                if (error) {
+                    throw new Error(`Error al actualizar el producto con tallas: ${error.message}`);
+                }
+                if (data.codigo !== 1) {
+                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
+                }
+                return {
+                    codigo: data.codigo,
+                    mensaje: data.mensaje,
+                    productoActualizado: data.query_result,
                 };
             }
             catch (error) {
@@ -207,7 +241,6 @@ class Admin {
     static ActualizarProductoSinTalla(id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                console.log(id_producto, categorias, url_imagen_miniaturas);
                 const { data, error } = yield conexion_1.default.rpc('p_update_producto', {
                     p_id_producto: id_producto,
                     p_nombre_prod: nombre_prod,
@@ -226,37 +259,7 @@ class Admin {
                     throw new Error(`Procedimiento falló: ${data.mensaje}`);
                 }
                 return {
-                    mensaje: data.mensaje,
-                    productoActualizado: data.query_result,
-                };
-            }
-            catch (error) {
-                console.error(error.message);
-                throw new Error(`Error inesperado: ${error.message}`);
-            }
-        });
-    }
-    static ActualizarProductoConTallas(id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, size_quantities, size_prices, url_imagen_miniaturas) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { data, error } = yield conexion_1.default.rpc('p_update_producto_talla', {
-                    p_id_producto: id_producto,
-                    p_nombre_prod: nombre_prod,
-                    p_descripcion: descripcion,
-                    p_categorias: categorias,
-                    p_url_imagen_principal: url_imagen_principal,
-                    p_size_quantities: size_quantities, // JSON con cantidades por talla
-                    p_size_prices: size_prices, // JSON con precios por talla
-                    p_url_imagen_miniaturas: url_imagen_miniaturas, // Miniaturas
-                });
-                if (error) {
-                    throw new Error(`Error al actualizar el producto con tallas: ${error.message}`);
-                }
-                // Verificar el resultado del procedimiento
-                if (data.codigo !== 1) {
-                    throw new Error(`Procedimiento falló: ${data.mensaje}`);
-                }
-                return {
+                    codigo: data.codigo,
                     mensaje: data.mensaje,
                     productoActualizado: data.query_result,
                 };
@@ -289,6 +292,7 @@ class Admin {
                     throw new Error(`Procedimiento falló: ${data.mensaje}`);
                 }
                 return {
+                    codigo: data.codigo,
                     mensaje: data.mensaje,
                     materialActualizado: data.query_result,
                 };

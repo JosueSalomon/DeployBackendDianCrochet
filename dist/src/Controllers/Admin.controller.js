@@ -248,12 +248,13 @@ const ActualizarProductoConTallas = (req, res) => __awaiter(void 0, void 0, void
     try {
         const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoConTallas(parseInt(productId), productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices);
         res.status(200).json({
+            codigo: updatedProduct.codigo,
             updatedProduct,
         });
     }
     catch (error) {
         res.status(500).json({
-            message: 'Error al actualizar el producto con tallas',
+            message: 'Error al actualizar el producto con tallas ',
             error: error.message,
         });
     }

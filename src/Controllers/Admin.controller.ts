@@ -360,11 +360,12 @@ export const ActualizarProductoConTallas = async (req: Request, res: Response) =
     );
 
     res.status(200).json({
+      codigo: updatedProduct.codigo,
       updatedProduct,
     });
   } catch (error: any) {
     res.status(500).json({
-      message: 'Error al actualizar el producto con tallas',
+      message: 'Error al actualizar el producto con tallas ',
       error: error.message,
     });
   }
