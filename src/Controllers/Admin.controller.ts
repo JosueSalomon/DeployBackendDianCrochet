@@ -437,11 +437,25 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
   }
 };
 
+// export const DeleteProducto = async (req: Request, res: Response) => {
+//   const {correo,contrasena } = req.body;
+//   const{IdProducto} = req.params;
+//   try{
+//       const deleteProduct = await Admin.DeleteProducto(parseInt(IdProducto),correo,contrasena);
+//       res.status(201).json({ 
+//         deleteProduct
+//     });
+//   }catch(error: any){
+//         console.log("error al borrar producto", error);
+//         res.status(500).json({ message: 'Error en el servidor', error });
+//     }
+
+// }
+
 export const DeleteProducto = async (req: Request, res: Response) => {
-  const {correo,contrasena } = req.body;
   const{IdProducto} = req.params;
   try{
-      const deleteProduct = await Admin.DeleteProducto(parseInt(IdProducto),correo,contrasena);
+      const deleteProduct = await Admin.DeleteProducto(parseInt(IdProducto));
       res.status(201).json({ 
         deleteProduct
     });
