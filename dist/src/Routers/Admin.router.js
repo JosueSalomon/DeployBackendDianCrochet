@@ -25,4 +25,5 @@ router.put('/update/producto/sintalla/:productId', Admin_controller_1.Actualizar
 router.put('/update/producto/contalla/:productId', Admin_controller_1.ActualizarProductoConTallas);
 router.put('/update/material/sintalla/:materialId', Admin_controller_1.ActualizarMaterialSinTallas);
 router.put('/update/material/contalla/:materialId', Admin_controller_1.ActualizarMaterialConGrosor);
+router.delete('/delete/producto/:IdProducto', Admin_controller_1.DeleteProducto);
 exports.default = router;

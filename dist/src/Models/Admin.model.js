@@ -340,5 +340,16 @@ class Admin {
             }
         });
     }
+    static DeleteProducto(id_producto, correo, contrasena) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_delete_producto', { p_id_prod: id_producto, p_correo: correo, p_contrasena: contrasena });
+            if (error)
+                throw error;
+            return {
+                codigo: data.codigo,
+                mensaje: data.mensaje
+            };
+        });
+    }
 }
 exports.Admin = Admin;

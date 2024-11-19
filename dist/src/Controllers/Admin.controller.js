@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ActualizarMaterialConGrosor = exports.ActualizarMaterialSinTallas = exports.ActualizarProductoConTallas = exports.ActualizarProductoSinTallas = exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.DeleteProducto = exports.ActualizarMaterialConGrosor = exports.ActualizarMaterialSinTallas = exports.ActualizarProductoConTallas = exports.ActualizarProductoSinTallas = exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -290,3 +290,18 @@ const ActualizarMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void
     }
 });
 exports.ActualizarMaterialConGrosor = ActualizarMaterialConGrosor;
+const DeleteProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { correo, contrasena } = req.body;
+    const { IdProducto } = req.params;
+    try {
+        const deleteProduct = yield Admin_model_1.Admin.DeleteProducto(parseInt(IdProducto), correo, contrasena);
+        res.status(201).json({
+            deleteProduct
+        });
+    }
+    catch (error) {
+        console.log("error al borrar producto", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+});
+exports.DeleteProducto = DeleteProducto;

@@ -402,6 +402,15 @@ export class Admin{
             throw new Error(`Error inesperado: ${error.message}`);
         }
     }
+
+    static async DeleteProducto(id_producto:number, correo: string,contrasena: string){
+    const { data, error } = await supabase.rpc('p_delete_producto', {p_id_prod: id_producto,p_correo: correo, p_contrasena: contrasena });
+    if (error) throw error;
+    return {
+        codigo: data.codigo,
+        mensaje: data.mensaje
+    };
+    }
     
     
     

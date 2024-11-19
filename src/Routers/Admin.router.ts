@@ -11,7 +11,8 @@ import { uploadImage,LoginAdmin,DetalleOrdenProdcuto,DetalleOrdenCliente,Obtener
     ActualizarMaterialConGrosor,
     ActualizarMaterialSinTallas,
     ActualizarProductoConTallas,
-    ActualizarProductoSinTallas
+    ActualizarProductoSinTallas,
+    DeleteProducto
 } from '../Controllers/Admin.controller'; 
 
 const router = Router();
@@ -42,6 +43,8 @@ router.put('/update/producto/sintalla/:productId', ActualizarProductoSinTallas);
 router.put('/update/producto/contalla/:productId', ActualizarProductoConTallas);
 router.put('/update/material/sintalla/:materialId', ActualizarMaterialSinTallas);
 router.put('/update/material/contalla/:materialId', ActualizarMaterialConGrosor);
+
+router.delete('/delete/producto/:IdProducto', DeleteProducto);
 
 
 

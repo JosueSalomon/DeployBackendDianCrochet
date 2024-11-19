@@ -436,3 +436,18 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
     res.status(500).json({ message: 'Error con la actualización del material con grosor', error });
   }
 };
+
+export const DeleteProducto = async (req: Request, res: Response) => {
+  const {correo,contrasena } = req.body;
+  const{IdProducto} = req.params;
+  try{
+      const deleteProduct = await Admin.DeleteProducto(parseInt(IdProducto),correo,contrasena);
+      res.status(201).json({ 
+        deleteProduct
+    });
+  }catch(error: any){
+        console.log("error al borrar producto", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+
+}
