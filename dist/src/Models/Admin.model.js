@@ -96,14 +96,15 @@ class Admin {
             return data;
         });
     }
-    static CrearProductoSinTallas(nombre_prod, precio, cantidad, descripcion, categorias, imagen_principal, imagen_miniaturas) {
+    static CrearProductoSinTallas(nombre_prod, precio, cantidad, descripcion, categorias, keywords, imagen_principal, imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data, error } = yield conexion_1.default.rpc('p_create_producto', {
+            const { data, error } = yield conexion_1.default.rpc('p_prueba_create_producto', {
                 p_nombre_prod: nombre_prod,
                 p_precio: precio,
                 p_cantidad_total: cantidad,
                 p_descripcion: descripcion,
                 p_categorias: categorias,
+                p_keywords: keywords,
                 p_url_imagen_principal: imagen_principal,
                 p_url_imagen_miniaturas: imagen_miniaturas
             });
@@ -340,9 +341,17 @@ class Admin {
             }
         });
     }
-    static DeleteProducto(id_producto, correo, contrasena) {
+    // static async DeleteProducto(id_producto:number, correo: string,contrasena: string){
+    // const { data, error } = await supabase.rpc('p_delete_producto', {p_id_prod: id_producto,p_correo: correo, p_contrasena: contrasena });
+    // if (error) throw error;
+    // return {
+    //     codigo: data.codigo,
+    //     mensaje: data.mensaje
+    // };
+    // }
+    static DeleteProducto(id_producto) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data, error } = yield conexion_1.default.rpc('p_delete_producto', { p_id_prod: id_producto, p_correo: correo, p_contrasena: contrasena });
+            const { data, error } = yield conexion_1.default.rpc('p_delete_producto', { p_id_prod: id_producto });
             if (error)
                 throw error;
             return {

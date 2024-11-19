@@ -80,15 +80,17 @@ export class Admin{
         cantidad: number,
         descripcion: string,
         categorias: number[],
+        keywords: string[],
         imagen_principal: string, 
         imagen_miniaturas: string[], 
     ) {
-        const { data, error } = await supabase.rpc('p_create_producto', {
+        const { data, error } = await supabase.rpc('p_prueba_create_producto', {
             p_nombre_prod: nombre_prod,
             p_precio: precio,
             p_cantidad_total: cantidad,
             p_descripcion: descripcion,
             p_categorias: categorias,
+            p_keywords: keywords,
             p_url_imagen_principal: imagen_principal,
             p_url_imagen_miniaturas: imagen_miniaturas
         });

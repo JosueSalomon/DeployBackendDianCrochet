@@ -166,6 +166,7 @@ export const CrearProductoSinTallas = async (req: Request, res: Response) => {
     stock,
     description,
     categories,
+    keywords,
     mainImage,
     galleryImages
   } = req.body;
@@ -177,6 +178,7 @@ export const CrearProductoSinTallas = async (req: Request, res: Response) => {
       stock,
       description,
       categories,
+      keywords,
       mainImage,
       galleryImages
     );

@@ -153,9 +153,9 @@ const Obtener_productos_por_categoria_admin = (req, res) => __awaiter(void 0, vo
 });
 exports.Obtener_productos_por_categoria_admin = Obtener_productos_por_categoria_admin;
 const CrearProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { productName, price, stock, description, categories, mainImage, galleryImages } = req.body;
+    const { productName, price, stock, description, categories, keywords, mainImage, galleryImages } = req.body;
     try {
-        const NewProduct = yield Admin_model_1.Admin.CrearProductoSinTallas(productName, price, stock, description, categories, mainImage, galleryImages);
+        const NewProduct = yield Admin_model_1.Admin.CrearProductoSinTallas(productName, price, stock, description, categories, keywords, mainImage, galleryImages);
         res.status(201).json({
             NewProduct
         });
@@ -290,11 +290,23 @@ const ActualizarMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void
     }
 });
 exports.ActualizarMaterialConGrosor = ActualizarMaterialConGrosor;
+// export const DeleteProducto = async (req: Request, res: Response) => {
+//   const {correo,contrasena } = req.body;
+//   const{IdProducto} = req.params;
+//   try{
+//       const deleteProduct = await Admin.DeleteProducto(parseInt(IdProducto),correo,contrasena);
+//       res.status(201).json({ 
+//         deleteProduct
+//     });
+//   }catch(error: any){
+//         console.log("error al borrar producto", error);
+//         res.status(500).json({ message: 'Error en el servidor', error });
+//     }
+// }
 const DeleteProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { correo, contrasena } = req.body;
     const { IdProducto } = req.params;
     try {
-        const deleteProduct = yield Admin_model_1.Admin.DeleteProducto(parseInt(IdProducto), correo, contrasena);
+        const deleteProduct = yield Admin_model_1.Admin.DeleteProducto(parseInt(IdProducto));
         res.status(201).json({
             deleteProduct
         });
