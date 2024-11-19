@@ -287,6 +287,7 @@ export class Admin{
         cantidad_total: number,
         descripcion: string,
         categorias: number[],
+        keywords: string[],
         url_imagen_principal: string,
         url_imagen_miniaturas: string[]
     ) {
@@ -298,6 +299,7 @@ export class Admin{
                 p_cantidad_total: cantidad_total,
                 p_descripcion: descripcion,
                 p_categorias: categorias,
+                p_keywords: keywords,
                 p_url_imagen_principal: url_imagen_principal,
                 p_url_imagen_miniaturas: url_imagen_miniaturas,
             });

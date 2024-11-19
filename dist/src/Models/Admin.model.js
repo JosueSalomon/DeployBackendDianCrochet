@@ -244,7 +244,7 @@ class Admin {
             return data;
         });
     }
-    static ActualizarProductoSinTalla(id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas) {
+    static ActualizarProductoSinTalla(id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error } = yield conexion_1.default.rpc('p_update_producto', {
@@ -254,6 +254,7 @@ class Admin {
                     p_cantidad_total: cantidad_total,
                     p_descripcion: descripcion,
                     p_categorias: categorias,
+                    p_keywords: keywords,
                     p_url_imagen_principal: url_imagen_principal,
                     p_url_imagen_miniaturas: url_imagen_miniaturas,
                 });

@@ -229,9 +229,9 @@ const ObtenerProductoAdmin = (req, res) => __awaiter(void 0, void 0, void 0, fun
 exports.ObtenerProductoAdmin = ObtenerProductoAdmin;
 const ActualizarProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { productId } = req.params;
-    const { productName, price, stock, description, categories, mainImage, galleryImages } = req.body;
+    const { productName, price, stock, description, categories, keywords, mainImage, galleryImages } = req.body;
     try {
-        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoSinTalla(parseInt(productId), productName, price, stock, description, categories, mainImage, galleryImages);
+        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoSinTalla(parseInt(productId), productName, price, stock, description, categories, keywords, mainImage, galleryImages);
         res.status(200).json({
             updatedProduct
         });

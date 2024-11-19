@@ -318,6 +318,7 @@ export const ActualizarProductoSinTallas = async (req: Request, res: Response) =
     stock,
     description,
     categories,
+    keywords,
     mainImage,
     galleryImages
   } = req.body;
@@ -330,6 +331,7 @@ export const ActualizarProductoSinTallas = async (req: Request, res: Response) =
       stock,
       description,
       categories,
+      keywords,
       mainImage,
       galleryImages
     );
