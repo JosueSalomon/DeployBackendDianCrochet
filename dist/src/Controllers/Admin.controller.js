@@ -167,10 +167,10 @@ const CrearProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, f
 });
 exports.CrearProductoSinTallas = CrearProductoSinTallas;
 const CrearProductoConTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
+    const { productName, description, categories, keywords, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
     try {
         // Llamar al método definido en la clase Admin
-        const NewProduct = yield Admin_model_1.Admin.CrearProductoConTallas(productName, description, categories, mainImage, galleryImages, sizeQuantities, sizePrices);
+        const NewProduct = yield Admin_model_1.Admin.CrearProductoConTallas(productName, description, categories, keywords, mainImage, galleryImages, sizeQuantities, sizePrices);
         // Respuesta exitosa
         res.status(201).json({
             NewProduct,
@@ -186,9 +186,9 @@ const CrearProductoConTallas = (req, res) => __awaiter(void 0, void 0, void 0, f
 });
 exports.CrearProductoConTallas = CrearProductoConTallas;
 const CrearMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { productName, price, stock, description, categoryId, marca, mainImage, galleryImages } = req.body;
+    const { productName, price, stock, description, categoryId, keywords, marca, mainImage, galleryImages } = req.body;
     try {
-        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialSinTallas(productName, price, stock, description, categoryId, marca, mainImage, galleryImages);
+        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialSinTallas(productName, price, stock, description, categoryId, keywords, marca, mainImage, galleryImages);
         res.status(201).json({
             NewMaterial
         });
@@ -200,9 +200,9 @@ const CrearMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, f
 });
 exports.CrearMaterialSinTallas = CrearMaterialSinTallas;
 const CrearMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices } = req.body;
+    const { productName, description, marca, mainImage, galleryImages, keywords, sizeQuantities, sizePrices } = req.body;
     try {
-        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialConGrosor(productName, description, marca, mainImage, galleryImages, sizeQuantities, sizePrices);
+        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialConGrosor(productName, description, marca, mainImage, galleryImages, keywords, sizeQuantities, sizePrices);
         res.status(201).json({
             NewMaterial
         });

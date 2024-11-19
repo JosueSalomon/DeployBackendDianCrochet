@@ -84,7 +84,7 @@ export class Admin{
         imagen_principal: string, 
         imagen_miniaturas: string[], 
     ) {
-        const { data, error } = await supabase.rpc('p_prueba_create_producto', {
+        const { data, error } = await supabase.rpc('p_create_producto', {
             p_nombre_prod: nombre_prod,
             p_precio: precio,
             p_cantidad_total: cantidad,
@@ -105,6 +105,7 @@ export class Admin{
         nombre_prod: string,
         descripcion: string,
         categorias: number[],
+        keywords: string[],
         imagen_principal: string,
         imagen_miniaturas: string[],
         size_quantities: Record<string, number | null>,
@@ -115,6 +116,7 @@ export class Admin{
                 p_nombre_prod: nombre_prod, // Convertir ID de tipo a número
                 p_descripcion: descripcion,
                 p_categorias: categorias,
+                p_keywords: keywords,
                 p_url_imagen_principal: imagen_principal,// Default a un array vacío si es null
                 p_size_quantities: size_quantities, // Objeto JSON con cantidades por talla
                 p_size_prices: size_prices,
@@ -203,6 +205,7 @@ export class Admin{
         cantidad: number,
         descripcion: string,
         categoria: number,
+        keywords: string[],
         marca: string,
         imagen_principal: string,
         imagen_miniaturas: string[], // Aquí aceptamos null o un arreglo de strings
@@ -213,6 +216,7 @@ export class Admin{
             p_cantidad_total: cantidad,
             p_descripcion: descripcion,
             p_categoria: categoria,
+            p_keywords: keywords,
             p_marca: marca,
             p_url_imagen_principal: imagen_principal,
             p_url_imagen_miniaturas: imagen_miniaturas, // Enviamos null si no hay miniaturas
@@ -231,6 +235,7 @@ export class Admin{
         marca: string,
         imagen_principal: string,
         imagen_miniaturas: string[], // Opcional, por defecto vacío
+        keywords: string[],
         size_quantities: Record<string, number | null>, // JSON de cantidades por grosor
         size_prices: Record<string, number | null> // JSON de precios por grosor
             ){
@@ -240,6 +245,7 @@ export class Admin{
             p_descripcion: descripcion,
             p_marca: marca,
             p_url_imagen_principal: imagen_principal,
+            p_keywords: keywords,
             p_size_quantities: size_quantities, // Cantidades por grosor
             p_size_prices: size_prices, // Precios por grosor
             p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas (opcional)

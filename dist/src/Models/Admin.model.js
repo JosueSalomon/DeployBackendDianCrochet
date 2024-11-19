@@ -98,7 +98,7 @@ class Admin {
     }
     static CrearProductoSinTallas(nombre_prod, precio, cantidad, descripcion, categorias, keywords, imagen_principal, imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data, error } = yield conexion_1.default.rpc('p_prueba_create_producto', {
+            const { data, error } = yield conexion_1.default.rpc('p_create_producto', {
                 p_nombre_prod: nombre_prod,
                 p_precio: precio,
                 p_cantidad_total: cantidad,
@@ -114,13 +114,14 @@ class Admin {
             return data;
         });
     }
-    static CrearProductoConTallas(nombre_prod, descripcion, categorias, imagen_principal, imagen_miniaturas, size_quantities, size_prices) {
+    static CrearProductoConTallas(nombre_prod, descripcion, categorias, keywords, imagen_principal, imagen_miniaturas, size_quantities, size_prices) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error } = yield conexion_1.default.rpc('p_create_producto_talla', {
                     p_nombre_prod: nombre_prod, // Convertir ID de tipo a número
                     p_descripcion: descripcion,
                     p_categorias: categorias,
+                    p_keywords: keywords,
                     p_url_imagen_principal: imagen_principal, // Default a un array vacío si es null
                     p_size_quantities: size_quantities, // Objeto JSON con cantidades por talla
                     p_size_prices: size_prices,
@@ -178,7 +179,7 @@ class Admin {
             }
         });
     }
-    static CrearMaterialSinTallas(nombre_material, precio, cantidad, descripcion, categoria, marca, imagen_principal, imagen_miniaturas) {
+    static CrearMaterialSinTallas(nombre_material, precio, cantidad, descripcion, categoria, keywords, marca, imagen_principal, imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data, error } = yield conexion_1.default.rpc('p_create_material_sintallas', {
                 p_nombre_material: nombre_material,
@@ -186,6 +187,7 @@ class Admin {
                 p_cantidad_total: cantidad,
                 p_descripcion: descripcion,
                 p_categoria: categoria,
+                p_keywords: keywords,
                 p_marca: marca,
                 p_url_imagen_principal: imagen_principal,
                 p_url_imagen_miniaturas: imagen_miniaturas, // Enviamos null si no hay miniaturas
@@ -197,7 +199,7 @@ class Admin {
         });
     }
     static CrearMaterialConGrosor(nombre_material, descripcion, marca, imagen_principal, imagen_miniaturas, // Opcional, por defecto vacío
-    size_quantities, // JSON de cantidades por grosor
+    keywords, size_quantities, // JSON de cantidades por grosor
     size_prices // JSON de precios por grosor
     ) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -207,6 +209,7 @@ class Admin {
                     p_descripcion: descripcion,
                     p_marca: marca,
                     p_url_imagen_principal: imagen_principal,
+                    p_keywords: keywords,
                     p_size_quantities: size_quantities, // Cantidades por grosor
                     p_size_prices: size_prices, // Precios por grosor
                     p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas (opcional)

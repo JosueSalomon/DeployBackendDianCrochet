@@ -196,6 +196,7 @@ export const CrearProductoConTallas = async (req: Request, res: Response) => {
     productName,
     description,
     categories,
+    keywords,
     mainImage,
     galleryImages,
     sizeQuantities,
@@ -208,6 +209,7 @@ export const CrearProductoConTallas = async (req: Request, res: Response) => {
       productName,
       description,
       categories,
+      keywords,
       mainImage,
       galleryImages,
       sizeQuantities,
@@ -234,6 +236,7 @@ export const CrearMaterialSinTallas = async (req: Request, res: Response) => {
     stock,
     description,
     categoryId,
+    keywords,
     marca,
     mainImage,
     galleryImages
@@ -246,6 +249,7 @@ export const CrearMaterialSinTallas = async (req: Request, res: Response) => {
       stock,
       description,
       categoryId,
+      keywords,
       marca,
       mainImage,
       galleryImages
@@ -266,6 +270,7 @@ export const CrearMaterialConGrosor = async (req: Request, res: Response) => {
     marca,
     mainImage,
     galleryImages,
+    keywords,
     sizeQuantities,
     sizePrices
   } = req.body;
@@ -277,6 +282,7 @@ export const CrearMaterialConGrosor = async (req: Request, res: Response) => {
       marca,
       mainImage,
       galleryImages,
+      keywords,
       sizeQuantities,
       sizePrices
     );
