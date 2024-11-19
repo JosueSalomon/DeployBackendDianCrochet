@@ -151,6 +151,7 @@ export class Admin{
         nombre_prod: string,
         descripcion: string,
         categorias: number[],
+        keywords: string[],
         url_imagen_principal: string,
         url_imagen_miniaturas: string[],
         size_quantities: Record<string, number | null>,
@@ -162,6 +163,7 @@ export class Admin{
                 nombre_prod,
                 descripcion,
                 categorias,
+                keywords,
                 url_imagen_principal,
                 size_quantities,
                 size_prices,
@@ -172,6 +174,7 @@ export class Admin{
                 p_nombre_prod: nombre_prod,
                 p_descripcion: descripcion,
                 p_categorias: categorias,
+                p_keywords: keywords,
                 p_url_imagen_principal: url_imagen_principal,
                 p_size_quantities: size_quantities, 
                 p_size_prices: size_prices, 
@@ -334,6 +337,7 @@ export class Admin{
         cantidad: number,
         descripcion: string,
         categoria: number,
+        keywords: string[],
         marca: string,
         url_imagen_principal: string,
         url_imagen_miniaturas: string[]
@@ -346,6 +350,7 @@ export class Admin{
                 p_cantidad_total: cantidad,
                 p_descripcion: descripcion,
                 p_categoria: categoria,
+                p_keywords: keywords,
                 p_marca: marca,
                 p_url_imagen_principal: url_imagen_principal,
                 p_url_imagen_miniaturas: url_imagen_miniaturas,
@@ -378,6 +383,7 @@ export class Admin{
         marca: string,
         imagen_principal: string,
         imagen_miniaturas: string[], // Opcional
+        keywords: string[],
         size_quantities: Record<string, number | null>, // JSON de cantidades por grosor
         size_prices: Record<string, number | null> // JSON de precios por grosor
     ) {
@@ -388,6 +394,7 @@ export class Admin{
                 p_descripcion: descripcion,
                 p_marca: marca,
                 p_url_imagen_principal: imagen_principal,
+                p_keywords: keywords,
                 p_size_quantities: size_quantities, // Cantidades por grosor
                 p_size_prices: size_prices, // Precios por grosor
                 p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas

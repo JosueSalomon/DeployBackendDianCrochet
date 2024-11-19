@@ -351,6 +351,7 @@ export const ActualizarProductoConTallas = async (req: Request, res: Response) =
     productName,
     description,
     categories,
+    keywords,
     mainImage,
     galleryImages,
     sizeQuantities,
@@ -363,6 +364,7 @@ export const ActualizarProductoConTallas = async (req: Request, res: Response) =
       productName,
       description,
       categories,
+      keywords,
       mainImage,
       galleryImages,
       sizeQuantities,
@@ -389,6 +391,7 @@ export const ActualizarMaterialSinTallas = async (req: Request, res: Response) =
     stock,
     description,
     categoryId,
+    keywords,
     marca,
     mainImage,
     galleryImages
@@ -402,6 +405,7 @@ export const ActualizarMaterialSinTallas = async (req: Request, res: Response) =
       stock,
       description,
       categoryId,
+      keywords,
       marca,
       mainImage,
       galleryImages
@@ -423,6 +427,7 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
     marca,
     mainImage,
     galleryImages,
+    keywords,
     sizeQuantities,
     sizePrices
   } = req.body;
@@ -435,6 +440,7 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
       marca,
       mainImage,
       galleryImages,
+      keywords,
       sizeQuantities,
       sizePrices
     );

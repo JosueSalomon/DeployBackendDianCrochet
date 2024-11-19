@@ -147,15 +147,16 @@ class Admin {
             }
         });
     }
-    static ActualizarProductoConTallas(id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, url_imagen_miniaturas, size_quantities, size_prices) {
+    static ActualizarProductoConTallas(id_producto, nombre_prod, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, size_quantities, size_prices) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                console.log(id_producto, nombre_prod, descripcion, categorias, url_imagen_principal, size_quantities, size_prices, url_imagen_miniaturas);
+                console.log(id_producto, nombre_prod, descripcion, categorias, keywords, url_imagen_principal, size_quantities, size_prices, url_imagen_miniaturas);
                 const { data, error } = yield conexion_1.default.rpc('p_update_producto_talla', {
                     p_id_producto: id_producto,
                     p_nombre_prod: nombre_prod,
                     p_descripcion: descripcion,
                     p_categorias: categorias,
+                    p_keywords: keywords,
                     p_url_imagen_principal: url_imagen_principal,
                     p_size_quantities: size_quantities,
                     p_size_prices: size_prices,
@@ -277,7 +278,7 @@ class Admin {
             }
         });
     }
-    static ActualizarMaterialSinTallas(id_material, nombre_material, precio, cantidad, descripcion, categoria, marca, url_imagen_principal, url_imagen_miniaturas) {
+    static ActualizarMaterialSinTallas(id_material, nombre_material, precio, cantidad, descripcion, categoria, keywords, marca, url_imagen_principal, url_imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { data, error } = yield conexion_1.default.rpc('p_update_material_sintallas', {
@@ -287,6 +288,7 @@ class Admin {
                     p_cantidad_total: cantidad,
                     p_descripcion: descripcion,
                     p_categoria: categoria,
+                    p_keywords: keywords,
                     p_marca: marca,
                     p_url_imagen_principal: url_imagen_principal,
                     p_url_imagen_miniaturas: url_imagen_miniaturas,
@@ -311,7 +313,7 @@ class Admin {
         });
     }
     static ActualizarMaterialConGrosor(id_material, nombre_material, descripcion, marca, imagen_principal, imagen_miniaturas, // Opcional
-    size_quantities, // JSON de cantidades por grosor
+    keywords, size_quantities, // JSON de cantidades por grosor
     size_prices // JSON de precios por grosor
     ) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -322,6 +324,7 @@ class Admin {
                     p_descripcion: descripcion,
                     p_marca: marca,
                     p_url_imagen_principal: imagen_principal,
+                    p_keywords: keywords,
                     p_size_quantities: size_quantities, // Cantidades por grosor
                     p_size_prices: size_prices, // Precios por grosor
                     p_url_imagen_miniaturas: imagen_miniaturas, // Miniaturas
