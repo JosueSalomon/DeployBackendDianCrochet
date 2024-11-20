@@ -469,9 +469,10 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
 // }
 
 export const DeleteProducto = async (req: Request, res: Response) => {
+  const {correo} = req.body;
   const{IdProducto} = req.params;
   try{
-      const deleteProduct = await Admin.DeleteProducto(parseInt(IdProducto));
+      const deleteProduct = await Admin.DeleteProducto(parseInt(IdProducto), correo);
       res.status(201).json({ 
         deleteProduct
     });

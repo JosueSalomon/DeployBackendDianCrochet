@@ -429,8 +429,8 @@ export class Admin{
     // };
     // }
 
-    static async DeleteProducto(id_producto:number){
-    const { data, error } = await supabase.rpc('p_delete_producto', {p_id_prod: id_producto});
+    static async DeleteProducto(id_producto:number, p_correo:string){
+    const { data, error } = await supabase.rpc('p_delete_producto', {p_id_prod: id_producto, p_correo: p_correo});
     if (error) throw error;
     return {
         codigo: data.codigo,

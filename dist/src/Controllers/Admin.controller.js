@@ -304,9 +304,10 @@ exports.ActualizarMaterialConGrosor = ActualizarMaterialConGrosor;
 //     }
 // }
 const DeleteProducto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { correo } = req.body;
     const { IdProducto } = req.params;
     try {
-        const deleteProduct = yield Admin_model_1.Admin.DeleteProducto(parseInt(IdProducto));
+        const deleteProduct = yield Admin_model_1.Admin.DeleteProducto(parseInt(IdProducto), correo);
         res.status(201).json({
             deleteProduct
         });
