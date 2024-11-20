@@ -171,8 +171,8 @@ export const CrearProductoSinTallas = async (req: Request, res: Response) => {
     galleryImages
   } = req.body;
   
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-  try {
+    try {
+      const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const NewProduct = await Admin.CrearProductoSinTallas(
       productName,
       price,
@@ -204,9 +204,9 @@ export const CrearProductoConTallas = async (req: Request, res: Response) => {
     sizePrices,
   } = req.body;
 
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-
+  
   try {
+    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     // Llamar al método definido en la clase Admin
     const NewProduct = await Admin.CrearProductoConTallas(
       productName,
@@ -244,10 +244,10 @@ export const CrearMaterialSinTallas = async (req: Request, res: Response) => {
     mainImage,
     galleryImages
   } = req.body;
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-
+  
 
   try {
+    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const NewMaterial = await Admin.CrearMaterialSinTallas(
       productName,
       price,
@@ -280,9 +280,9 @@ export const CrearMaterialConGrosor = async (req: Request, res: Response) => {
     sizePrices
   } = req.body;
 
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-
+  
   try {
+    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const NewMaterial = await Admin.CrearMaterialConGrosor(
       productName,
       description,
@@ -329,9 +329,9 @@ export const ActualizarProductoSinTallas = async (req: Request, res: Response) =
     mainImage,
     galleryImages
   } = req.body;
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-
+  
   try {
+    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedProduct = await Admin.ActualizarProductoSinTalla(
       parseInt(productId),
       productName,
@@ -366,10 +366,10 @@ export const ActualizarProductoConTallas = async (req: Request, res: Response) =
     sizePrices,
   } = req.body;
 
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-  
+    
 
   try {
+    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedProduct = await Admin.ActualizarProductoConTallas(
       parseInt(productId),
       productName,
@@ -407,9 +407,9 @@ export const ActualizarMaterialSinTallas = async (req: Request, res: Response) =
     mainImage,
     galleryImages
   } = req.body;
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-
+  
   try {
+    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedMaterial = await Admin.ActualizarMaterialSinTallas(
       parseInt(materialId),
       productName,
@@ -444,10 +444,10 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
     sizePrices
   } = req.body;
 
-  const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
-
+  
 
   try {
+    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedMaterial = await Admin.ActualizarMaterialConGrosor(
       parseInt(materialId),
       productName,
