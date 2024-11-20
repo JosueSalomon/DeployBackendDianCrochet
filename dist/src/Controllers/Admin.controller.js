@@ -155,8 +155,7 @@ exports.Obtener_productos_por_categoria_admin = Obtener_productos_por_categoria_
 const CrearProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { productName, price, stock, description, categories, keywords, mainImage, galleryImages } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
-        const NewProduct = yield Admin_model_1.Admin.CrearProductoSinTallas(productName, price, stock, description, categories, keywordsEnMayusculas, mainImage, galleryImages);
+        const NewProduct = yield Admin_model_1.Admin.CrearProductoSinTallas(productName, price, stock, description, categories, keywords, mainImage, galleryImages);
         res.status(201).json({
             NewProduct
         });
@@ -170,9 +169,8 @@ exports.CrearProductoSinTallas = CrearProductoSinTallas;
 const CrearProductoConTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { productName, description, categories, keywords, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
         // Llamar al método definido en la clase Admin
-        const NewProduct = yield Admin_model_1.Admin.CrearProductoConTallas(productName, description, categories, keywordsEnMayusculas, mainImage, galleryImages, sizeQuantities, sizePrices);
+        const NewProduct = yield Admin_model_1.Admin.CrearProductoConTallas(productName, description, categories, keywords, mainImage, galleryImages, sizeQuantities, sizePrices);
         // Respuesta exitosa
         res.status(201).json({
             NewProduct,
@@ -190,8 +188,7 @@ exports.CrearProductoConTallas = CrearProductoConTallas;
 const CrearMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { productName, price, stock, description, categoryId, keywords, marca, mainImage, galleryImages } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
-        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialSinTallas(productName, price, stock, description, categoryId, keywordsEnMayusculas, marca, mainImage, galleryImages);
+        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialSinTallas(productName, price, stock, description, categoryId, keywords, marca, mainImage, galleryImages);
         res.status(201).json({
             NewMaterial
         });
@@ -205,8 +202,7 @@ exports.CrearMaterialSinTallas = CrearMaterialSinTallas;
 const CrearMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { productName, description, marca, mainImage, galleryImages, keywords, sizeQuantities, sizePrices } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
-        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialConGrosor(productName, description, marca, mainImage, galleryImages, keywordsEnMayusculas, sizeQuantities, sizePrices);
+        const NewMaterial = yield Admin_model_1.Admin.CrearMaterialConGrosor(productName, description, marca, mainImage, galleryImages, keywords, sizeQuantities, sizePrices);
         res.status(201).json({
             NewMaterial
         });
@@ -235,8 +231,7 @@ const ActualizarProductoSinTallas = (req, res) => __awaiter(void 0, void 0, void
     const { productId } = req.params;
     const { productName, price, stock, description, categories, keywords, mainImage, galleryImages } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
-        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoSinTalla(parseInt(productId), productName, price, stock, description, categories, keywordsEnMayusculas, mainImage, galleryImages);
+        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoSinTalla(parseInt(productId), productName, price, stock, description, categories, keywords, mainImage, galleryImages);
         res.status(200).json({
             updatedProduct
         });
@@ -251,8 +246,7 @@ const ActualizarProductoConTallas = (req, res) => __awaiter(void 0, void 0, void
     const { productId } = req.params;
     const { productName, description, categories, keywords, mainImage, galleryImages, sizeQuantities, sizePrices, } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
-        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoConTallas(parseInt(productId), productName, description, categories, keywordsEnMayusculas, mainImage, galleryImages, sizeQuantities, sizePrices);
+        const updatedProduct = yield Admin_model_1.Admin.ActualizarProductoConTallas(parseInt(productId), productName, description, categories, keywords, mainImage, galleryImages, sizeQuantities, sizePrices);
         res.status(200).json({
             codigo: updatedProduct.codigo,
             updatedProduct,
@@ -270,8 +264,7 @@ const ActualizarMaterialSinTallas = (req, res) => __awaiter(void 0, void 0, void
     const { materialId } = req.params;
     const { productName, price, stock, description, categoryId, keywords, marca, mainImage, galleryImages } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
-        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialSinTallas(parseInt(materialId), productName, price, stock, description, categoryId, keywordsEnMayusculas, marca, mainImage, galleryImages);
+        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialSinTallas(parseInt(materialId), productName, price, stock, description, categoryId, keywords, marca, mainImage, galleryImages);
         res.status(200).json({
             updatedMaterial
         });
@@ -286,8 +279,7 @@ const ActualizarMaterialConGrosor = (req, res) => __awaiter(void 0, void 0, void
     const { materialId } = req.params;
     const { productName, description, marca, mainImage, galleryImages, keywords, sizeQuantities, sizePrices } = req.body;
     try {
-        const keywordsEnMayusculas = (keywords !== null && keywords !== void 0 ? keywords : []).map((keyword) => keyword.toLowerCase());
-        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialConGrosor(parseInt(materialId), productName, description, marca, mainImage, galleryImages, keywordsEnMayusculas, sizeQuantities, sizePrices);
+        const updatedMaterial = yield Admin_model_1.Admin.ActualizarMaterialConGrosor(parseInt(materialId), productName, description, marca, mainImage, galleryImages, keywords, sizeQuantities, sizePrices);
         res.status(200).json({
             updatedMaterial
         });

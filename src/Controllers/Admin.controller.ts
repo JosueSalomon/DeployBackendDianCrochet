@@ -172,14 +172,13 @@ export const CrearProductoSinTallas = async (req: Request, res: Response) => {
   } = req.body;
   
     try {
-      const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const NewProduct = await Admin.CrearProductoSinTallas(
       productName,
       price,
       stock,
       description,
       categories,
-      keywordsEnMayusculas,
+      keywords,
       mainImage,
       galleryImages
     );
@@ -206,13 +205,12 @@ export const CrearProductoConTallas = async (req: Request, res: Response) => {
 
   
   try {
-    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     // Llamar al método definido en la clase Admin
     const NewProduct = await Admin.CrearProductoConTallas(
       productName,
       description,
       categories,
-      keywordsEnMayusculas,
+      keywords,
       mainImage,
       galleryImages,
       sizeQuantities,
@@ -247,14 +245,13 @@ export const CrearMaterialSinTallas = async (req: Request, res: Response) => {
   
 
   try {
-    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const NewMaterial = await Admin.CrearMaterialSinTallas(
       productName,
       price,
       stock,
       description,
       categoryId,
-      keywordsEnMayusculas,
+      keywords,
       marca,
       mainImage,
       galleryImages
@@ -279,17 +276,15 @@ export const CrearMaterialConGrosor = async (req: Request, res: Response) => {
     sizeQuantities,
     sizePrices
   } = req.body;
-
   
   try {
-    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const NewMaterial = await Admin.CrearMaterialConGrosor(
       productName,
       description,
       marca,
       mainImage,
       galleryImages,
-      keywordsEnMayusculas,
+      keywords,
       sizeQuantities,
       sizePrices
     );
@@ -331,7 +326,6 @@ export const ActualizarProductoSinTallas = async (req: Request, res: Response) =
   } = req.body;
   
   try {
-    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedProduct = await Admin.ActualizarProductoSinTalla(
       parseInt(productId),
       productName,
@@ -339,7 +333,7 @@ export const ActualizarProductoSinTallas = async (req: Request, res: Response) =
       stock,
       description,
       categories,
-      keywordsEnMayusculas,
+      keywords,
       mainImage,
       galleryImages
     );
@@ -369,13 +363,12 @@ export const ActualizarProductoConTallas = async (req: Request, res: Response) =
     
 
   try {
-    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedProduct = await Admin.ActualizarProductoConTallas(
       parseInt(productId),
       productName,
       description,
       categories,
-      keywordsEnMayusculas,
+      keywords,
       mainImage,
       galleryImages,
       sizeQuantities,
@@ -409,7 +402,6 @@ export const ActualizarMaterialSinTallas = async (req: Request, res: Response) =
   } = req.body;
   
   try {
-    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedMaterial = await Admin.ActualizarMaterialSinTallas(
       parseInt(materialId),
       productName,
@@ -417,7 +409,7 @@ export const ActualizarMaterialSinTallas = async (req: Request, res: Response) =
       stock,
       description,
       categoryId,
-      keywordsEnMayusculas,
+      keywords,
       marca,
       mainImage,
       galleryImages
@@ -447,7 +439,6 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
   
 
   try {
-    const keywordsEnMayusculas: string[] = (keywords ?? []).map((keyword: string) => keyword.toLowerCase());
     const updatedMaterial = await Admin.ActualizarMaterialConGrosor(
       parseInt(materialId),
       productName,
@@ -455,7 +446,7 @@ export const ActualizarMaterialConGrosor = async (req: Request, res: Response) =
       marca,
       mainImage,
       galleryImages,
-      keywordsEnMayusculas,
+      keywords,
       sizeQuantities,
       sizePrices
     );

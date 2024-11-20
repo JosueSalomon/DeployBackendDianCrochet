@@ -295,6 +295,7 @@ export class Admin{
         url_imagen_miniaturas: string[]
     ) {
         try {
+            console.log("keywords", keywords)
             const { data, error } = await supabase.rpc('p_update_producto', {
                 p_id_producto: id_producto,
                 p_nombre_prod: nombre_prod,
@@ -343,6 +344,7 @@ export class Admin{
         url_imagen_miniaturas: string[]
     ) {
         try {
+            console.log("keywords", keywords)
             const { data, error } = await supabase.rpc('p_update_material_sintallas', {
                 p_id_material: id_material,
                 p_nombre_material: nombre_material,

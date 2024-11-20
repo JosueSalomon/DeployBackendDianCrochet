@@ -248,6 +248,7 @@ class Admin {
     static ActualizarProductoSinTalla(id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                console.log("keywords", keywords);
                 const { data, error } = yield conexion_1.default.rpc('p_update_producto', {
                     p_id_producto: id_producto,
                     p_nombre_prod: nombre_prod,
@@ -281,6 +282,7 @@ class Admin {
     static ActualizarMaterialSinTallas(id_material, nombre_material, precio, cantidad, descripcion, categoria, keywords, marca, url_imagen_principal, url_imagen_miniaturas) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                console.log("keywords", keywords);
                 const { data, error } = yield conexion_1.default.rpc('p_update_material_sintallas', {
                     p_id_material: id_material,
                     p_nombre_material: nombre_material,
