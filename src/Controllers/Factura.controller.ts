@@ -36,7 +36,7 @@ export const actualizarCarrito = async (req: Request, res: Response) => {
         res.status(500).json({
             message: 'Informacion del error: ', 
             error: errorInfo
-        });
+    });
     }
 }
 
