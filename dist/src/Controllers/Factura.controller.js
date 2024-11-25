@@ -31,8 +31,8 @@ const insertarProductoCarrito = (req, res) => __awaiter(void 0, void 0, void 0, 
 exports.insertarProductoCarrito = insertarProductoCarrito;
 const actualizarCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { correo, nuevaCantidad, idProducto, idTalla, idGrosor } = req.body;
-        const actualizar = yield Factura_model_1.Factura.actualizarCarrito(correo, nuevaCantidad, idProducto, idTalla, idGrosor);
+        const { correo, nuevaCantidad, idProducto, talla, grosor } = req.body;
+        const actualizar = yield Factura_model_1.Factura.actualizarCarrito(correo, nuevaCantidad, idProducto, talla, grosor);
         res.status(201).json({ actualizar });
     }
     catch (error) {
@@ -49,8 +49,8 @@ const actualizarCarrito = (req, res) => __awaiter(void 0, void 0, void 0, functi
 exports.actualizarCarrito = actualizarCarrito;
 const eliminarProductoCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { correo, idProducto, idTalla, idGrosor } = req.body;
-        const eliminar = yield Factura_model_1.Factura.eliminarProductoCarrito(correo, idProducto, idTalla, idGrosor);
+        const { correo, idProducto, talla, grosor } = req.body;
+        const eliminar = yield Factura_model_1.Factura.eliminarProductoCarrito(correo, idProducto, talla, grosor);
         res.status(201).json({ eliminar });
     }
     catch (error) {

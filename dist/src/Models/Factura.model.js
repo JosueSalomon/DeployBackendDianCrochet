@@ -31,14 +31,14 @@ class Factura {
             return data;
         });
     }
-    static actualizarCarrito(correo, nuevaCantidad, idProducto, idTalla, idGrosor) {
+    static actualizarCarrito(correo, nuevaCantidad, idProducto, talla, grosor) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data, error } = yield conexion_1.default.rpc('p_actualizar_carrito', {
                 p_correo_usuario: correo,
                 p_nueva_cantidad: nuevaCantidad,
                 p_id_producto: idProducto,
-                p_id_talla: idTalla,
-                p_id_grosor: idGrosor
+                p_talla: talla,
+                p_grosor: grosor
             });
             if (error) {
                 throw error;
@@ -46,13 +46,13 @@ class Factura {
             return data;
         });
     }
-    static eliminarProductoCarrito(correo, idProducto, idTalla, idGrosor) {
+    static eliminarProductoCarrito(correo, idProducto, talla, grosor) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data, error } = yield conexion_1.default.rpc('p_eliminar_producto_carrito', {
                 p_correo_usuario: correo,
                 p_id_producto: idProducto,
-                p_id_talla: idTalla,
-                p_id_grosor: idGrosor
+                p_talla: talla,
+                p_grosor: grosor
             });
             if (error) {
                 throw error;

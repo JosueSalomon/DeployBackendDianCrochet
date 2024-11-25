@@ -22,8 +22,8 @@ export const insertarProductoCarrito = async (req: Request, res: Response) => {
 
 export const actualizarCarrito = async (req: Request, res: Response) => {
     try {
-        const {correo, nuevaCantidad, idProducto, idTalla, idGrosor} = req.body;
-        const actualizar = await Factura.actualizarCarrito(correo, nuevaCantidad, idProducto, idTalla, idGrosor);
+        const {correo, nuevaCantidad, idProducto, talla, grosor} = req.body;
+        const actualizar = await Factura.actualizarCarrito(correo, nuevaCantidad, idProducto, talla, grosor);
 
         res.status(201).json({actualizar});
 
@@ -42,8 +42,8 @@ export const actualizarCarrito = async (req: Request, res: Response) => {
 
 export const eliminarProductoCarrito = async (req: Request, res: Response) => {
     try {
-    const {correo, idProducto, idTalla, idGrosor} = req.body;
-        const eliminar = await Factura.eliminarProductoCarrito(correo, idProducto, idTalla, idGrosor);
+    const {correo, idProducto, talla, grosor} = req.body;
+        const eliminar = await Factura.eliminarProductoCarrito(correo, idProducto, talla, grosor);
 
         res.status(201).json({eliminar});
     } catch (error) {
