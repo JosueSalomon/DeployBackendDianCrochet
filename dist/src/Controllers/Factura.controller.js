@@ -31,8 +31,8 @@ const insertarProductoCarrito = (req, res) => __awaiter(void 0, void 0, void 0, 
 exports.insertarProductoCarrito = insertarProductoCarrito;
 const actualizarCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { correo, nuevaCantidad, idProducto } = req.body;
-        const actualizar = yield Factura_model_1.Factura.actualizarCarrito(correo, nuevaCantidad, idProducto);
+        const { correo, nuevaCantidad, idProducto, idTalla, idGrosor } = req.body;
+        const actualizar = yield Factura_model_1.Factura.actualizarCarrito(correo, nuevaCantidad, idProducto, idTalla, idGrosor);
         res.status(201).json({ actualizar });
     }
     catch (error) {

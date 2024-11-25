@@ -26,12 +26,16 @@ export class Factura {
     static async actualizarCarrito(
         correo: string,
         nuevaCantidad: number,
-        idProducto: number
+        idProducto: number,
+        idTalla: number,
+        idGrosor: number
     ){
         const {data, error} = await supabase.rpc('p_actualizar_carrito', {
             p_correo_usuario: correo,
             p_nueva_cantidad: nuevaCantidad,
-            p_id_producto: idProducto
+            p_id_producto: idProducto,
+            p_id_talla: idTalla,  
+            p_id_grosor: idGrosor
         });
         if (error) {
             throw error;

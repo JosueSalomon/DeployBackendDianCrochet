@@ -22,8 +22,8 @@ export const insertarProductoCarrito = async (req: Request, res: Response) => {
 
 export const actualizarCarrito = async (req: Request, res: Response) => {
     try {
-        const {correo, nuevaCantidad, idProducto} = req.body;
-        const actualizar = await Factura.actualizarCarrito(correo, nuevaCantidad, idProducto);
+        const {correo, nuevaCantidad, idProducto, idTalla, idGrosor} = req.body;
+        const actualizar = await Factura.actualizarCarrito(correo, nuevaCantidad, idProducto, idTalla, idGrosor);
 
         res.status(201).json({actualizar});
 
