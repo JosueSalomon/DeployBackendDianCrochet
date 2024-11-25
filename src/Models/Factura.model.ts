@@ -45,11 +45,15 @@ export class Factura {
 
     static async eliminarProductoCarrito(
         correo: string,
-        idProducto: number
+        idProducto: number,
+        idTalla: number,
+        idGrosor: number
     ){
         const {data, error} = await supabase.rpc('p_eliminar_producto_carrito', {
             p_correo_usuario: correo,
-            p_id_producto: idProducto
+            p_id_producto: idProducto,
+            p_id_talla: idTalla,
+            p_id_grosor: idGrosor
         });
         if(error){
             throw error;

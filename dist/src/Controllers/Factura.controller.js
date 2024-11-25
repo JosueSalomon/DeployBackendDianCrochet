@@ -49,8 +49,8 @@ const actualizarCarrito = (req, res) => __awaiter(void 0, void 0, void 0, functi
 exports.actualizarCarrito = actualizarCarrito;
 const eliminarProductoCarrito = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { correo, idProducto } = req.body;
-        const eliminar = yield Factura_model_1.Factura.eliminarProductoCarrito(correo, idProducto);
+        const { correo, idProducto, idTalla, idGrosor } = req.body;
+        const eliminar = yield Factura_model_1.Factura.eliminarProductoCarrito(correo, idProducto, idTalla, idGrosor);
         res.status(201).json({ eliminar });
     }
     catch (error) {
