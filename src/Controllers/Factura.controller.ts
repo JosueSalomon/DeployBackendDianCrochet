@@ -42,8 +42,8 @@ export const actualizarCarrito = async (req: Request, res: Response) => {
 
 export const eliminarProductoCarrito = async (req: Request, res: Response) => {
     try {
-    const {correo, idProducto} = req.body;
-        const eliminar = await Factura.eliminarProductoCarrito(correo, idProducto);
+    const {correo, idProducto, idTalla, idGrosor} = req.body;
+        const eliminar = await Factura.eliminarProductoCarrito(correo, idProducto, idTalla, idGrosor);
 
         res.status(201).json({eliminar});
     } catch (error) {

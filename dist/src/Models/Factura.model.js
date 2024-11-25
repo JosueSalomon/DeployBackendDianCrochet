@@ -46,11 +46,13 @@ class Factura {
             return data;
         });
     }
-    static eliminarProductoCarrito(correo, idProducto) {
+    static eliminarProductoCarrito(correo, idProducto, idTalla, idGrosor) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data, error } = yield conexion_1.default.rpc('p_eliminar_producto_carrito', {
                 p_correo_usuario: correo,
-                p_id_producto: idProducto
+                p_id_producto: idProducto,
+                p_id_talla: idTalla,
+                p_id_grosor: idGrosor
             });
             if (error) {
                 throw error;
