@@ -58,7 +58,7 @@ export const createPayment = async (req: Request, res: Response) => {
             landing_page: 'NO_PREFERENCE',
             user_action: 'PAY_NOW',
             return_url: `https://deploybackenddiancrochet.onrender.com/pago/obtener/${id_factura}`,
-            cancel_url: 'https://dian-crochet-8ii.vercel.app/checkout/shop-cart'
+            cancel_url: 'https://dian-crochet-8ii.vercel.app/profile/records'
         }
     };
 
