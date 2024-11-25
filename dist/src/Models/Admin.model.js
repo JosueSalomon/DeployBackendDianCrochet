@@ -369,5 +369,17 @@ class Admin {
             };
         });
     }
+    static OrdenesRangoFecha(min_fecha, max_fecha) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_get_todas_las_ordenes_por_fecha', {
+                p_fecha_min: min_fecha,
+                p_fecha_max: max_fecha
+            });
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;

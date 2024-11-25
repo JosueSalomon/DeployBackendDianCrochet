@@ -440,6 +440,17 @@ export class Admin{
     };
     }
     
+    static async OrdenesRangoFecha(min_fecha: string, max_fecha: string){
+        const { data, error } = await supabase.rpc('p_get_todas_las_ordenes_por_fecha',{
+            p_fecha_min: min_fecha,
+            p_fecha_max: max_fecha
+        });
+        if(error){
+            throw error;
+        }
+        return data;
+    }
     
     
+
 }

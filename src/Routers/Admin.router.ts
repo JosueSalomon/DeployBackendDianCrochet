@@ -12,7 +12,8 @@ import { uploadImage,LoginAdmin,DetalleOrdenProdcuto,DetalleOrdenCliente,Obtener
     ActualizarMaterialSinTallas,
     ActualizarProductoConTallas,
     ActualizarProductoSinTallas,
-    DeleteProducto
+    DeleteProducto,
+    FiltrarFechasRango
 } from '../Controllers/Admin.controller'; 
 
 const router = Router();
@@ -23,6 +24,7 @@ router.post('/login', LoginAdmin);
 router.get('/detalle/orden/:IdOrden', DetalleOrdenProdcuto);
 router.get('/detalle/cliente/orden/:IdOrden', DetalleOrdenCliente);
 router.post('/ordenes', ObtenerOrdenes);
+router.post('/ordenes/fechas', FiltrarFechasRango);
 router.get('/factura/estados', ObtenerEstdosFactura);
 router.put('/update/estado/:IdOrden', ActualizarEstadoOrden);
 router.get('/productos', Obtener_productos_admin);

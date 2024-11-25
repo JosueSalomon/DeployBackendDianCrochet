@@ -12,6 +12,7 @@ router.post('/login', Admin_controller_1.LoginAdmin);
 router.get('/detalle/orden/:IdOrden', Admin_controller_1.DetalleOrdenProdcuto);
 router.get('/detalle/cliente/orden/:IdOrden', Admin_controller_1.DetalleOrdenCliente);
 router.post('/ordenes', Admin_controller_1.ObtenerOrdenes);
+router.post('/ordenes/fechas', Admin_controller_1.FiltrarFechasRango);
 router.get('/factura/estados', Admin_controller_1.ObtenerEstdosFactura);
 router.put('/update/estado/:IdOrden', Admin_controller_1.ActualizarEstadoOrden);
 router.get('/productos', Admin_controller_1.Obtener_productos_admin);
