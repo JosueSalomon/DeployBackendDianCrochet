@@ -488,3 +488,16 @@ export const DeleteProducto = async (req: Request, res: Response) => {
     }
 
 }
+
+export const FiltrarFechasRango = async (req: Request, res: Response) =>{
+  const{p_fecha_min, p_fecha_max}=req.body
+  try{
+        const ordenes = await Admin.OrdenesRangoFecha(p_fecha_min,p_fecha_max);
+        res.status(201).json({
+          ordenes
+        })
+  }catch(error: any){
+    console.log("error al obtener las ordenes", error);
+    res.status(500).json({ message: 'Error en el servidor', error });
+  }
+}
