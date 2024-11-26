@@ -501,3 +501,70 @@ export const FiltrarFechasRango = async (req: Request, res: Response) =>{
     res.status(500).json({ message: 'Error en el servidor', error });
   }
 }
+
+export const CreateKit = async (req: Request, res: Response) =>{
+  const{
+    nombre_prod,
+    precio,
+    cantidad_total,
+    descripcion,
+    categorias,
+    keywords,
+    url_imagen_principal,
+    url_imagen_miniaturas,
+    url_tutorial
+  }=req.body
+
+  try{
+    const kit = await Admin.CrearKit(
+      nombre_prod,
+      precio,
+      cantidad_total,
+      descripcion,
+      categorias,
+      keywords,
+      url_imagen_principal,
+      url_imagen_miniaturas,
+      url_tutorial);
+      res.status(201).json({
+        kit
+      })
+  }catch(error: any){
+    console.log("error al crear Kit", error);
+    res.status(500).json({ message: 'Error en el servidor', error });
+  }
+}
+
+export const UpdateKit = async (req: Request, res: Response) =>{
+  const{id_producto}=req.params
+  const{
+    nombre_prod,
+    precio,
+    cantidad_total,
+    descripcion,
+    categorias,
+    keywords,
+    url_imagen_principal,
+    url_imagen_miniaturas,
+    url_tutorial
+  }=req.body
+  try{
+    const UpdatedKit = await Admin.Updatekit(
+      Number(id_producto),
+      nombre_prod,
+      precio,
+      cantidad_total,
+      descripcion,
+      categorias,
+      keywords,
+      url_imagen_principal,
+      url_imagen_miniaturas,
+      url_tutorial);
+      res.status(201).json({
+        UpdatedKit
+      })
+  }catch(error: any){
+    console.log("error al actualizar Kit", error);
+    res.status(500).json({ message: 'Error en el servidor',error});
+  }
+}

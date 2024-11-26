@@ -13,7 +13,9 @@ import { uploadImage,LoginAdmin,DetalleOrdenProdcuto,DetalleOrdenCliente,Obtener
     ActualizarProductoConTallas,
     ActualizarProductoSinTallas,
     DeleteProducto,
-    FiltrarFechasRango
+    FiltrarFechasRango,
+    CreateKit,
+    UpdateKit
 } from '../Controllers/Admin.controller'; 
 
 const router = Router();
@@ -37,6 +39,7 @@ router.post('/create/producto/sintalla', CrearProductoSinTallas);
 router.post('/create/producto/contalla', CrearProductoConTallas);
 router.post('/create/material/sintalla', CrearMaterialSinTallas);
 router.post('/create/material/contalla', CrearMaterialConGrosor);
+router.post('/create/kit', CreateKit);
 
 
 router.get('/get/producto/:IdProducto', ObtenerProductoAdmin);
@@ -45,6 +48,7 @@ router.put('/update/producto/sintalla/:productId', ActualizarProductoSinTallas);
 router.put('/update/producto/contalla/:productId', ActualizarProductoConTallas);
 router.put('/update/material/sintalla/:materialId', ActualizarMaterialSinTallas);
 router.put('/update/material/contalla/:materialId', ActualizarMaterialConGrosor);
+router.put('/update/kit/:id_producto', UpdateKit);
 
 router.delete('/delete/producto/:IdProducto', DeleteProducto);
 

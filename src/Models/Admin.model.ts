@@ -451,6 +451,64 @@ export class Admin{
         return data;
     }
     
+    static async CrearKit(
+        nombre_prod: string,
+        precio: number,
+        cantidad_total: number,
+        descripcion: string,
+        categorias: number[],
+        keywords:string[] ,
+        url_imagen_principal: string ,
+        url_imagen_miniaturas:string[] ,
+        url_tutorial: string
+    ){
+        const { data, error } = await supabase.rpc('p_create_kit',{
+            p_nombre_prod: nombre_prod,
+            p_precio: precio,
+            p_cantidad_total: cantidad_total,
+            p_descripcion: descripcion,
+            p_categorias: categorias,
+            p_keywords: keywords,
+            p_url_imagen_principal: url_imagen_principal,
+            p_url_imagen_miniaturas: url_imagen_miniaturas,
+            p_url_tutorial: url_tutorial,
+        });
+        ;
     
+        if (error) {
+            throw new Error(`Error al crear el kit: ${error.message}`);
+        }
+        return data;
+    }
 
+    static async Updatekit(
+        id_producto: number,
+        nombre_prod: string,
+        precio: number,
+        cantidad_total: number,
+        descripcion: string,
+        categorias: number[],
+        keywords:string[] ,
+        url_imagen_principal: string ,
+        url_imagen_miniaturas:string[] ,
+        url_tutorial: string
+    ){
+        const { data, error } = await supabase.rpc('p_update_kit',{
+            p_id_producto: id_producto,
+            p_nombre_prod: nombre_prod,
+            p_precio: precio,
+            p_cantidad_total: cantidad_total,
+            p_descripcion: descripcion,
+            p_categorias: categorias,
+            p_keywords: keywords,
+            p_url_imagen_principal: url_imagen_principal,
+            p_url_imagen_miniaturas: url_imagen_miniaturas,
+            p_url_tutorial: url_tutorial,
+        });
+        if (error) {
+            throw new Error(`Error al update del kit: ${error.message}`);
+        }
+        return data;
+
+    }
 }

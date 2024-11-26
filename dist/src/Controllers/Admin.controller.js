@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FiltrarFechasRango = exports.DeleteProducto = exports.ActualizarMaterialConGrosor = exports.ActualizarMaterialSinTallas = exports.ActualizarProductoConTallas = exports.ActualizarProductoSinTallas = exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.UpdateKit = exports.CreateKit = exports.FiltrarFechasRango = exports.DeleteProducto = exports.ActualizarMaterialConGrosor = exports.ActualizarMaterialSinTallas = exports.ActualizarProductoConTallas = exports.ActualizarProductoSinTallas = exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -332,3 +332,32 @@ const FiltrarFechasRango = (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.FiltrarFechasRango = FiltrarFechasRango;
+const CreateKit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial } = req.body;
+    try {
+        const kit = yield Admin_model_1.Admin.CrearKit(nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial);
+        res.status(201).json({
+            kit
+        });
+    }
+    catch (error) {
+        console.log("error al crear Kit", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+});
+exports.CreateKit = CreateKit;
+const UpdateKit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id_producto } = req.params;
+    const { nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial } = req.body;
+    try {
+        const UpdatedKit = yield Admin_model_1.Admin.Updatekit(Number(id_producto), nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial);
+        res.status(201).json({
+            UpdatedKit
+        });
+    }
+    catch (error) {
+        console.log("error al actualizar Kit", error);
+        res.status(500).json({ message: 'Error en el servidor', error });
+    }
+});
+exports.UpdateKit = UpdateKit;

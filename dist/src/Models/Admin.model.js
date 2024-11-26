@@ -381,5 +381,45 @@ class Admin {
             return data;
         });
     }
+    static CrearKit(nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_create_kit', {
+                p_nombre_prod: nombre_prod,
+                p_precio: precio,
+                p_cantidad_total: cantidad_total,
+                p_descripcion: descripcion,
+                p_categorias: categorias,
+                p_keywords: keywords,
+                p_url_imagen_principal: url_imagen_principal,
+                p_url_imagen_miniaturas: url_imagen_miniaturas,
+                p_url_tutorial: url_tutorial,
+            });
+            ;
+            if (error) {
+                throw new Error(`Error al crear el kit: ${error.message}`);
+            }
+            return data;
+        });
+    }
+    static Updatekit(id_producto, nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_update_kit', {
+                p_id_producto: id_producto,
+                p_nombre_prod: nombre_prod,
+                p_precio: precio,
+                p_cantidad_total: cantidad_total,
+                p_descripcion: descripcion,
+                p_categorias: categorias,
+                p_keywords: keywords,
+                p_url_imagen_principal: url_imagen_principal,
+                p_url_imagen_miniaturas: url_imagen_miniaturas,
+                p_url_tutorial: url_tutorial,
+            });
+            if (error) {
+                throw new Error(`Error al update del kit: ${error.message}`);
+            }
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;
