@@ -62,7 +62,7 @@ const createPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 landing_page: 'NO_PREFERENCE',
                 user_action: 'PAY_NOW',
                 return_url: `https://deploybackenddiancrochet.onrender.com/pago/obtener/${id_factura}`,
-                cancel_url: 'https://dian-crochet-8ii.vercel.app/profile/records'
+                cancel_url: 'https://dian-crochet-8ii.vercel.app/checkout/shop-cart'
             }
         };
         const response = yield axios_1.default.post(`${process.env.PAYPAL_API}/v2/checkout/orders`, body, {
