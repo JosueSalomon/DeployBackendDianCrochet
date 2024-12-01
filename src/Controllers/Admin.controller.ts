@@ -1,7 +1,9 @@
-import { Request, Response } from 'express';
+import { Request, Response  } from 'express';
 import { Admin } from '../Models/Admin.model'
-
+import express from 'express';
 import imagekit from '../Utils/imageKitConfig';
+import DriveUploader from '../../uploads/uploadToDrive';
+
 
 
 interface MulterRequest extends Request {
@@ -498,8 +500,8 @@ export const FiltrarFechasRango = async (req: Request, res: Response) =>{
         })
   }catch(error: any){
     console.log("error al obtener las ordenes", error);
-    res.status(500).json({ message: 'Error en el servidor', error });
-  }
+    res.status(500).json({ message: 'Error en el servidor', error });
+  }
 }
 
 export const CreateKit = async (req: Request, res: Response) =>{
@@ -531,7 +533,7 @@ export const CreateKit = async (req: Request, res: Response) =>{
       })
   }catch(error: any){
     console.log("error al crear Kit", error);
-    res.status(500).json({ message: 'Error en el servidor', error });
+    res.status(500).json({ message: 'Error en el servidor', error });
   }
 }
 
@@ -568,3 +570,31 @@ export const UpdateKit = async (req: Request, res: Response) =>{
     res.status(500).json({ message: 'Error en el servidor',error});
   }
 }
+
+export const uploadFile = async (req: Request, res: Response): Promise<void> => {
+  if (!req.file) {
+    res.status(400).json({ message: 'No se proporcionó ningún archivo' });
+    return; // Asegúrate de terminar la ejecución con `return`
+  }
+  const {nombre_archivo} = req.body
+  const uploader = new DriveUploader();
+
+  try {
+    const fileId = await uploader.uploadPDF(req.file);
+    
+    // Obtener la URL del archivo con el permiso para "Cualquiera con el enlace"
+    const fileUrl = uploader.getFileUrl(fileId);
+    const registroPDF = await Admin.createPDF(nombre_archivo,fileUrl)
+    res.status(200).json({
+      message: 'Archivo subido exitosamente',
+      fileId: fileId,
+      fileUrl: fileUrl, // Retorna la URL del archivo con el enlace compartido
+      registroPDF
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error al subir el archivo',
+      error: error instanceof Error ? error.message : 'Error desconocido',
+    });
+  }
+};

@@ -421,5 +421,17 @@ class Admin {
             return data;
         });
     }
+    static createPDF(nombre_archivo, url) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_insert_pdf', {
+                p_nombre_archivo: nombre_archivo,
+                p_url: url
+            });
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
 }
 exports.Admin = Admin;

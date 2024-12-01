@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import fileUpload from 'express-fileupload';
 
 //rutass ola
 import userRouter from './Routers/Usuario.router'

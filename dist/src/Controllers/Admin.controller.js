@@ -12,9 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateKit = exports.CreateKit = exports.FiltrarFechasRango = exports.DeleteProducto = exports.ActualizarMaterialConGrosor = exports.ActualizarMaterialSinTallas = exports.ActualizarProductoConTallas = exports.ActualizarProductoSinTallas = exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
+exports.uploadFile = exports.UpdateKit = exports.CreateKit = exports.FiltrarFechasRango = exports.DeleteProducto = exports.ActualizarMaterialConGrosor = exports.ActualizarMaterialSinTallas = exports.ActualizarProductoConTallas = exports.ActualizarProductoSinTallas = exports.ObtenerProductoAdmin = exports.CrearMaterialConGrosor = exports.CrearMaterialSinTallas = exports.CrearProductoConTallas = exports.CrearProductoSinTallas = exports.Obtener_productos_por_categoria_admin = exports.Obtener_productos_admin = exports.ActualizarEstadoOrden = exports.ObtenerEstdosFactura = exports.ObtenerOrdenes = exports.DetalleOrdenCliente = exports.DetalleOrdenProdcuto = exports.LoginAdmin = exports.uploadImage = void 0;
 const Admin_model_1 = require("../Models/Admin.model");
 const imageKitConfig_1 = __importDefault(require("../Utils/imageKitConfig"));
+const uploadToDrive_1 = __importDefault(require("../../uploads/uploadToDrive"));
 const uploadImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const file = req.file;
@@ -361,3 +362,30 @@ const UpdateKit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.UpdateKit = UpdateKit;
+const uploadFile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!req.file) {
+        res.status(400).json({ message: 'No se proporcionó ningún archivo' });
+        return; // Asegúrate de terminar la ejecución con `return`
+    }
+    const { nombre_archivo } = req.body;
+    const uploader = new uploadToDrive_1.default();
+    try {
+        const fileId = yield uploader.uploadPDF(req.file);
+        // Obtener la URL del archivo con el permiso para "Cualquiera con el enlace"
+        const fileUrl = uploader.getFileUrl(fileId);
+        const registroPDF = yield Admin_model_1.Admin.createPDF(nombre_archivo, fileUrl);
+        res.status(200).json({
+            message: 'Archivo subido exitosamente',
+            fileId: fileId,
+            fileUrl: fileUrl, // Retorna la URL del archivo con el enlace compartido
+            registroPDF
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            message: 'Error al subir el archivo',
+            error: error instanceof Error ? error.message : 'Error desconocido',
+        });
+    }
+});
+exports.uploadFile = uploadFile;

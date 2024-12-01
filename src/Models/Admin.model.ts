@@ -1,4 +1,6 @@
 import  supabase  from '../Utils/conexion';
+import fs from 'fs';
+import Busboy from 'busboy';
 
 
 export class Admin{
@@ -510,5 +512,17 @@ export class Admin{
         }
         return data;
 
+    }
+
+
+    static async createPDF(nombre_archivo: string, url: string){
+        const{data, error} = await supabase.rpc('p_insert_pdf',{
+            p_nombre_archivo: nombre_archivo,
+            p_url: url
+        });
+        if(error){
+            throw error;
+        }
+        return data;
     }
 }
