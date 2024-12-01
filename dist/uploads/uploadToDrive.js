@@ -11,12 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const googleapis_1 = require("googleapis");
 const stream_1 = require("stream");
-const KEYFILEPATH = 'kitspdf_KEY.json'; // Asegúrate de que la ruta sea correcta
 const SCOPES = ['https://www.googleapis.com/auth/drive.file'];
 class DriveUploader {
     constructor() {
-        const auth = new googleapis_1.google.auth.GoogleAuth({
-            keyFile: KEYFILEPATH,
+        const auth = new googleapis_1.google.auth.JWT({
+            email: process.env.CLIENT_EMAIL,
+            key: (process.env.PRIVATE_KEY || '').replace(/\\n/g, '\n'), // Reemplaza los \n con saltos de línea
             scopes: SCOPES,
         });
         this.drive = googleapis_1.google.drive({ version: 'v3', auth });

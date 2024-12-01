@@ -1,15 +1,15 @@
 import { google } from 'googleapis';
 import { Readable } from 'stream';
 
-const KEYFILEPATH = 'kitspdf_KEY.json'; // Asegúrate de que la ruta sea correcta
 const SCOPES = ['https://www.googleapis.com/auth/drive.file'];
 
 class DriveUploader {
   private drive: any;
 
   constructor() {
-    const auth = new google.auth.GoogleAuth({
-      keyFile: KEYFILEPATH,
+    const auth = new google.auth.JWT({
+      email: process.env.CLIENT_EMAIL,
+      key: (process.env.PRIVATE_KEY || '').replace(/\\n/g, '\n'), // Reemplaza los \n con saltos de línea
       scopes: SCOPES,
     });
 
