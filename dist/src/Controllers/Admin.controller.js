@@ -334,9 +334,9 @@ const FiltrarFechasRango = (req, res) => __awaiter(void 0, void 0, void 0, funct
 });
 exports.FiltrarFechasRango = FiltrarFechasRango;
 const CreateKit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial } = req.body;
+    const { nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_patron, url_imagen_principal, url_imagen_miniaturas, url_tutorial } = req.body;
     try {
-        const kit = yield Admin_model_1.Admin.CrearKit(nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial);
+        const kit = yield Admin_model_1.Admin.CrearKit(nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_patron, url_imagen_principal, url_imagen_miniaturas, url_tutorial);
         res.status(201).json({
             kit
         });
@@ -349,9 +349,9 @@ const CreateKit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.CreateKit = CreateKit;
 const UpdateKit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id_producto } = req.params;
-    const { nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial } = req.body;
+    const { nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_patron, url_imagen_principal, url_imagen_miniaturas, url_tutorial } = req.body;
     try {
-        const UpdatedKit = yield Admin_model_1.Admin.Updatekit(Number(id_producto), nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_imagen_principal, url_imagen_miniaturas, url_tutorial);
+        const UpdatedKit = yield Admin_model_1.Admin.Updatekit(Number(id_producto), nombre_prod, precio, cantidad_total, descripcion, categorias, keywords, url_patron, url_imagen_principal, url_imagen_miniaturas, url_tutorial);
         res.status(201).json({
             UpdatedKit
         });

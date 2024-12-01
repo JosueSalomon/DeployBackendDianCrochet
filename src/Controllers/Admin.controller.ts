@@ -512,6 +512,7 @@ export const CreateKit = async (req: Request, res: Response) =>{
     descripcion,
     categorias,
     keywords,
+    url_patron,
     url_imagen_principal,
     url_imagen_miniaturas,
     url_tutorial
@@ -525,6 +526,7 @@ export const CreateKit = async (req: Request, res: Response) =>{
       descripcion,
       categorias,
       keywords,
+      url_patron,
       url_imagen_principal,
       url_imagen_miniaturas,
       url_tutorial);
@@ -546,6 +548,7 @@ export const UpdateKit = async (req: Request, res: Response) =>{
     descripcion,
     categorias,
     keywords,
+    url_patron,
     url_imagen_principal,
     url_imagen_miniaturas,
     url_tutorial
@@ -559,6 +562,7 @@ export const UpdateKit = async (req: Request, res: Response) =>{
       descripcion,
       categorias,
       keywords,
+      url_patron,
       url_imagen_principal,
       url_imagen_miniaturas,
       url_tutorial);

@@ -460,6 +460,7 @@ export class Admin{
         descripcion: string,
         categorias: number[],
         keywords:string[] ,
+        url_patron: string,
         url_imagen_principal: string ,
         url_imagen_miniaturas:string[] ,
         url_tutorial: string
@@ -471,6 +472,7 @@ export class Admin{
             p_descripcion: descripcion,
             p_categorias: categorias,
             p_keywords: keywords,
+            p_url_patron: url_patron,
             p_url_imagen_principal: url_imagen_principal,
             p_url_imagen_miniaturas: url_imagen_miniaturas,
             p_url_tutorial: url_tutorial,
@@ -490,7 +492,8 @@ export class Admin{
         cantidad_total: number,
         descripcion: string,
         categorias: number[],
-        keywords:string[] ,
+        keywords:string[],
+        url_patron: string,
         url_imagen_principal: string ,
         url_imagen_miniaturas:string[] ,
         url_tutorial: string
@@ -503,6 +506,7 @@ export class Admin{
             p_descripcion: descripcion,
             p_categorias: categorias,
             p_keywords: keywords,
+            p_url_patron: url_patron,
             p_url_imagen_principal: url_imagen_principal,
             p_url_imagen_miniaturas: url_imagen_miniaturas,
             p_url_tutorial: url_tutorial,
