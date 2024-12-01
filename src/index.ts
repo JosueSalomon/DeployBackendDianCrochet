@@ -11,6 +11,7 @@ import facturaRouter from './Routers/Factura.router'
 import pagoRouter from './Routers/Pagos.router'
 
 dotenv.config();
+require('dotenv').config();
 const app: Express = express();
 const port = process.env.PORT;
 

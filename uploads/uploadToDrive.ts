@@ -8,11 +8,10 @@ class DriveUploader {
 
   constructor() {
     const auth = new google.auth.JWT({
-      email: process.env.CLIENT_EMAIL,
-      key: (process.env.PRIVATE_KEY || '').replace(/\\n/g, '\n'), // Reemplaza los \n con saltos de línea
-      scopes: SCOPES,
-    });
-
+        email: process.env.CLIENT_EMAIL,
+        key: (process.env.PRIVATE_KEY || '').replace(/\\n/g, '\n'), // Reemplaza \n con saltos de línea reales
+        scopes: SCOPES,
+      });
     this.drive = google.drive({ version: 'v3', auth });
   }
 
@@ -70,5 +69,6 @@ class DriveUploader {
     return `https://drive.google.com/file/d/${fileId}/view?usp=sharing`;
   }
 }
+console.log("PRIVATE_KEY:", process.env.PRIVATE_KEY);
 
 export default DriveUploader;

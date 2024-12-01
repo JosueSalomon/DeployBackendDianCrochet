@@ -16,7 +16,7 @@ class DriveUploader {
     constructor() {
         const auth = new googleapis_1.google.auth.JWT({
             email: process.env.CLIENT_EMAIL,
-            key: (process.env.PRIVATE_KEY || '').replace(/\\n/g, '\n'), // Reemplaza los \n con saltos de línea
+            key: (process.env.PRIVATE_KEY || '').replace(/\\n/g, '\n'), // Reemplaza \n con saltos de línea reales
             scopes: SCOPES,
         });
         this.drive = googleapis_1.google.drive({ version: 'v3', auth });
@@ -73,4 +73,5 @@ class DriveUploader {
         return `https://drive.google.com/file/d/${fileId}/view?usp=sharing`;
     }
 }
+console.log("PRIVATE_KEY:", process.env.PRIVATE_KEY);
 exports.default = DriveUploader;

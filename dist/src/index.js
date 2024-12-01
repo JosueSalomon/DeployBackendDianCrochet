@@ -13,6 +13,7 @@ const Producto_router_1 = __importDefault(require("./Routers/Producto.router"));
 const Factura_router_1 = __importDefault(require("./Routers/Factura.router"));
 const Pagos_router_1 = __importDefault(require("./Routers/Pagos.router"));
 dotenv_1.default.config();
+require('dotenv').config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
 app.use((0, cors_1.default)());
