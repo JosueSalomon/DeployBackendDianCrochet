@@ -186,3 +186,16 @@ export const ordenarMaterialesPorPrecioYCategoria = async (req: Request, res: Re
 //         res.status(500).json({ message: 'algo paso mal :(', error });
 //     }
 // };
+
+export const Search = async(req: Request, res: Response) =>{
+    const{nombre_prod,tallas} = req.body
+    try{
+        const resultado = await Producto.Search(nombre_prod,tallas)
+        res.status(201).json({
+            resultado
+        })
+    }catch(error){
+        console.log('error en la busqueda',error);
+        res.status(500).json({message:'algo paso mal :('})
+    }
+}

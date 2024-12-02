@@ -144,4 +144,15 @@ export class Producto{
     //     }
     //     return data
     // }
+
+    static async Search(nombre_prod: string, tallas: string[]){
+        const { data, error } = await supabase.rpc('p_searchbar',{
+            p_nombre_prod:nombre_prod ,
+            p_tallas: tallas
+        });
+        if (error) {
+            throw error;
+        }
+        return data;
+    }
 }
