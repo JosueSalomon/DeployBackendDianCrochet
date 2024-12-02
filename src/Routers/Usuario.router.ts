@@ -18,7 +18,7 @@ router.put('/actualizar/:correo', updateUser);
 router.post('/facturas/:correo', getFacturasUsuario);
 router.post('/tutoriales/:correo', getTutorialesDeUsuario);
 router.put('/restablecer/contrasena/anterior', restablecerContrasenaAnterior);
-router.post('/tutoriales/:correo', getKitsDeUsario);
+router.post('/kits/:correo', getKitsDeUsario);
 
 
 
