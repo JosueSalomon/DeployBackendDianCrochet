@@ -27,7 +27,7 @@ app.use('/factura', Factura_router_1.default);
 app.use('/pago', Pagos_router_1.default);
 //Servidor Raiz.
 app.get('/', (req, res) => {
-    res.send('Root server is on siuuuuuuuuu holis erick trono mi deploy');
+    res.send('Root server is on siuuuuuuuuu reparando cosas que arruinaron los duendes');
 });
 //Mensaje de consola que dice que funciona.
 app.listen(port, () => {
