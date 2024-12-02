@@ -124,5 +124,29 @@ class Producto {
             return data;
         });
     }
+    // static async GetDetalleMaterial(
+    //     id_Producto: number
+    // ){
+    //     const{data, error} = await supabase.rpc('get_material_info',{
+    //         p_id_producto: id_Producto
+    //     });
+    //     if(error){
+    //         throw error;
+    //     }
+    //     return data
+    // }
+    static search(nombre_prod, tallas) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(nombre_prod, tallas);
+            const { data, error } = yield conexion_1.default.rpc('p_searchbar', {
+                p_nombre_prod: nombre_prod,
+                p_tallas: tallas
+            });
+            if (error) {
+                throw error;
+            }
+            return data;
+        });
+    }
 }
 exports.Producto = Producto;

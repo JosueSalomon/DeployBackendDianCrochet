@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ordenarMaterialesPorPrecioYCategoria = exports.obtenerCategoriasMateriales = exports.obtenerProductosRandom = exports.getDetalleProducto = exports.getProductosSimilares = exports.filtrarOrdenarPorPopularidad = exports.ordenarProductosPorPrecioYCategoria = exports.obtenerCategorias = exports.filtrarProductosPorPrecioYCategoria = void 0;
+exports.search = exports.ordenarMaterialesPorPrecioYCategoria = exports.obtenerCategoriasMateriales = exports.obtenerProductosRandom = exports.getDetalleProducto = exports.getProductosSimilares = exports.filtrarOrdenarPorPopularidad = exports.ordenarProductosPorPrecioYCategoria = exports.obtenerCategorias = exports.filtrarProductosPorPrecioYCategoria = void 0;
 const Producto_model_1 = require("../Models/Producto.model");
 const filtrarProductosPorPrecioYCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { categorias, min_precio, max_precio } = req.body;
@@ -154,3 +154,17 @@ exports.ordenarMaterialesPorPrecioYCategoria = ordenarMaterialesPorPrecioYCatego
 //         res.status(500).json({ message: 'algo paso mal :(', error });
 //     }
 // };
+const search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { nombre, tallas } = req.body;
+    try {
+        const resultado = yield Producto_model_1.Producto.search(nombre, tallas);
+        res.status(201).json({
+            resultado
+        });
+    }
+    catch (error) {
+        console.log('error trayendo el resultado', error);
+        res.status(500).json({ message: 'error con el resultado', error });
+    }
+});
+exports.search = search;

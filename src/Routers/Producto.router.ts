@@ -7,6 +7,7 @@ import {
     obtenerProductosRandom, 
     obtenerCategoriasMateriales,
     ordenarMaterialesPorPrecioYCategoria,
+    search,
     } from '../Controllers/Producto.controller'
     //getDetalleMaterial
 const router = express.Router();
@@ -22,6 +23,6 @@ router.get('/categorias/materiales', obtenerCategoriasMateriales);
 router.post('/materiales/ordenados/:idTipoProducto',ordenarMaterialesPorPrecioYCategoria)
 // router.get('/detalle/material/:idProducto', getDetalleMaterial);
 
-
+router.post('/search', search);
 
 export default router;

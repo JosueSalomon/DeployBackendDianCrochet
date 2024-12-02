@@ -186,3 +186,19 @@ export const ordenarMaterialesPorPrecioYCategoria = async (req: Request, res: Re
 //         res.status(500).json({ message: 'algo paso mal :(', error });
 //     }
 // };
+
+export const search = async (req: Request, res: Response) => {
+    const {nombre, tallas} = req.body;
+    
+    try {
+        const resultado = await Producto.search(nombre, tallas);
+  
+        res.status(201).json({
+          resultado
+        });
+    }
+    catch (error) {
+        console.log('error trayendo el resultado', error);
+        res.status(500).json({ message: 'error con el resultado', error });
+    }
+  }
