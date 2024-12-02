@@ -17,5 +17,4 @@ router.get('/:tipoproducto', Producto_controller_1.obtenerProductosRandom);
 router.get('/categorias/materiales', Producto_controller_1.obtenerCategoriasMateriales);
 router.post('/materiales/ordenados/:idTipoProducto', Producto_controller_1.ordenarMaterialesPorPrecioYCategoria);
 // router.get('/detalle/material/:idProducto', getDetalleMaterial);
-router.post('/search', Producto_controller_1.search);
 exports.default = router;
