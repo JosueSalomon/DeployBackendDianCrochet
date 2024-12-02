@@ -156,6 +156,16 @@ export class User {
         return data;
     }
 
+    static async getKitsDeUsario(correo: string,columna_ordenamiento: string,direccion_ordenamiento: string){
+        const { data, error } = await supabase.rpc('p_buscar_kits_por_usuario',{
+            p_correo: correo,
+            p_columna_ordenamiento:columna_ordenamiento,
+            p_direccion_ordenamiento:direccion_ordenamiento 
+        });
+        if (error) throw error;
+        return data;
+    }
+
     // static async getUsers(){
     //     const { data, error } = await supabase.rpc('read_users') 
     //     if (error) throw error;

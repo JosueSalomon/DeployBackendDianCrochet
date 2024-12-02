@@ -165,5 +165,17 @@ class User {
             return data;
         });
     }
+    static getKitsDeUsario(correo, columna_ordenamiento, direccion_ordenamiento) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error } = yield conexion_1.default.rpc('p_buscar_kits_por_usuario', {
+                p_correo: correo,
+                p_columna_ordenamiento: columna_ordenamiento,
+                p_direccion_ordenamiento: direccion_ordenamiento
+            });
+            if (error)
+                throw error;
+            return data;
+        });
+    }
 }
 exports.User = User;

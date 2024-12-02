@@ -454,6 +454,24 @@ export const restablecerContrasenaAnterior = async (req: Request, res: Response)
 }
 
 
+export const getKitsDeUsario = async (req: Request, res: Response) =>{
+    const { correo } = req.params;
+    const{
+        columna_ordenamiento,
+        direccion_ordenamiento
+    } = req.body
+
+    try{
+        const kitsDelUsuario = await User.getKitsDeUsario(correo,columna_ordenamiento,direccion_ordenamiento);
+        res.status(201).json({
+            kitsDelUsuario
+        });
+    }catch(error){
+        console.log('error con fetch tutoriales del usuario ', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+}
+
 // export const getUsers = async (req: Request, res: Response) => {
 //     try {
 //         const users = await User.getUsers();

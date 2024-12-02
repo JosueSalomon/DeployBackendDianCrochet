@@ -20,6 +20,7 @@ router.put('/actualizar/:correo', Usuario_controller_1.updateUser);
 router.post('/facturas/:correo', Usuario_controller_1.getFacturasUsuario);
 router.post('/tutoriales/:correo', Usuario_controller_1.getTutorialesDeUsuario);
 router.put('/restablecer/contrasena/anterior', Usuario_controller_1.restablecerContrasenaAnterior);
+router.post('/tutoriales/:correo', Usuario_controller_1.getKitsDeUsario);
 // router.delete('/delete/:id', deleteUser);
 // router.get('/login', loginUser);
 // router.post('/sendEmail', EnviarCorreo);

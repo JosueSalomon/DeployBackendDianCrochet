@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.restablecerContrasenaAnterior = exports.getTutorialesDeUsuario = exports.getFacturasUsuario = exports.updateUser = exports.getUsuario = exports.UpdateFoto = exports.establecerContrasenaSegura = exports.restablecerNuevaContrasena = exports.correoRestablecerContrasena = exports.login = exports.nuevoCodigo = exports.ValidarCorreo = exports.crearUsuarioYEnviarCorreo = void 0;
+exports.getKitsDeUsario = exports.restablecerContrasenaAnterior = exports.getTutorialesDeUsuario = exports.getFacturasUsuario = exports.updateUser = exports.getUsuario = exports.UpdateFoto = exports.establecerContrasenaSegura = exports.restablecerNuevaContrasena = exports.correoRestablecerContrasena = exports.login = exports.nuevoCodigo = exports.ValidarCorreo = exports.crearUsuarioYEnviarCorreo = void 0;
 const Usuario_model_1 = require("../Models/Usuario.model");
 const mailer_1 = require("../Utils/mailer");
 function generarCodigoAleatorio() {
@@ -397,6 +397,21 @@ const restablecerContrasenaAnterior = (req, res) => __awaiter(void 0, void 0, vo
     }
 });
 exports.restablecerContrasenaAnterior = restablecerContrasenaAnterior;
+const getKitsDeUsario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { correo } = req.params;
+    const { columna_ordenamiento, direccion_ordenamiento } = req.body;
+    try {
+        const kitsDelUsuario = yield Usuario_model_1.User.getKitsDeUsario(correo, columna_ordenamiento, direccion_ordenamiento);
+        res.status(201).json({
+            kitsDelUsuario
+        });
+    }
+    catch (error) {
+        console.log('error con fetch tutoriales del usuario ', error);
+        res.status(500).json({ message: 'algo paso mal :(', error });
+    }
+});
+exports.getKitsDeUsario = getKitsDeUsario;
 // export const getUsers = async (req: Request, res: Response) => {
 //     try {
 //         const users = await User.getUsers();
