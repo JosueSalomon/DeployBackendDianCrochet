@@ -135,11 +135,12 @@ class Producto {
     //     }
     //     return data
     // }
-    static Search(nombre_prod, tallas) {
+    static Search(nombre_prod, tallas, tipos_prod) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data, error } = yield conexion_1.default.rpc('p_searchbar', {
                 p_nombre_prod: nombre_prod,
-                p_tallas: tallas
+                p_tallas: tallas,
+                p_tipos_prod: tipos_prod
             });
             if (error) {
                 throw error;

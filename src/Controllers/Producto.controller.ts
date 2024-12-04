@@ -188,9 +188,9 @@ export const ordenarMaterialesPorPrecioYCategoria = async (req: Request, res: Re
 // };
 
 export const Search = async(req: Request, res: Response) =>{
-    const{nombre_prod,tallas} = req.body
+    const{nombre_prod,tallas,tipos_prod} = req.body
     try{
-        const resultado = await Producto.Search(nombre_prod,tallas)
+        const resultado = await Producto.Search(nombre_prod,tallas,tipos_prod)
         res.status(201).json({
             resultado
         })
