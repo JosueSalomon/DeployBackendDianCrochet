@@ -155,9 +155,9 @@ exports.ordenarMaterialesPorPrecioYCategoria = ordenarMaterialesPorPrecioYCatego
 //     }
 // };
 const Search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { nombre_prod, tallas } = req.body;
+    const { nombre_prod, tallas, tipos_prod } = req.body;
     try {
-        const resultado = yield Producto_model_1.Producto.Search(nombre_prod, tallas);
+        const resultado = yield Producto_model_1.Producto.Search(nombre_prod, tallas, tipos_prod);
         res.status(201).json({
             resultado
         });

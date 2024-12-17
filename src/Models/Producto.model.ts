@@ -145,10 +145,11 @@ export class Producto{
     //     return data
     // }
 
-    static async Search(nombre_prod: string, tallas: string[]){
+    static async Search(nombre_prod: string, tallas: string[], tipos_prod: number[]){
         const { data, error } = await supabase.rpc('p_searchbar',{
             p_nombre_prod:nombre_prod ,
-            p_tallas: tallas
+            p_tallas: tallas,
+            p_tipos_prod: tipos_prod
         });
         if (error) {
             throw error;
