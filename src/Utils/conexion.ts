@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 import { createClient } from '@supabase/supabase-js'
-import { Database } from '../../database.types'
+import { Database } from '../database.types'
 //ola
 config();
 const supabaseUrl = process.env.SUPABASE_URL;
